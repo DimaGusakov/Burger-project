@@ -1,0 +1,33 @@
+@import './../../vars/vars.scss';
+nav {
+  .container{
+    display: flex;
+    gap: 24px;
+  }
+
+}
+
+.nav__item{
+  display: flex;
+  gap: 8px;
+  align-items: center;
+  padding: 8px 14px;
+  background-color: $white;
+  border-radius: 50px;
+  transition: all .3s;
+  &:hover{
+    background-color: $light-orange;
+  }
+  &.active{
+    background-color: $light-orange;
+  }
+  a{
+    text-decoration: none;
+    color: $black;
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 22px;
+    font-family: $font;
+
+  }
+}
