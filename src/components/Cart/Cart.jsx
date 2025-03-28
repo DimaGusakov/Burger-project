@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react';
 import './Cart.scss';
+import DeliveryImg from '/src/assets/icon-delivery.png'
 import DataCart from '../../Data/Cart.json';
 
 export default function Cart() {
@@ -50,7 +51,7 @@ export default function Cart() {
                 {cartItems.map(item => (
                   <div key={item.id} className="cart-item">
                     <div className="cart-item__info">
-                      <img src={`/src/assets/cart-img${item.id}.png`} alt={item.name} className="cart-item__image" />
+                      <img src={item.url} alt={item.name} className="cart-item__image" />
                       <div className="cart-item__details">
                         <div className="cart-item__detail-wrapper">
                           <h4 className="cart-item__name">{item.name}</h4>
@@ -90,7 +91,7 @@ export default function Cart() {
 
               {freeDelivery && (
                 <div className="delivery-info">
-                  <img src="/src/assets/icon-delivery.png" alt="Доставка" className="delivery-icon" /> 
+                  <img src={DeliveryImg} alt="Доставка" className="delivery-icon" /> 
                     <p>Бесплатная доставка</p>
                 </div>
               )}
