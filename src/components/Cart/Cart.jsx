@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 import './Cart.scss';
 import DeliveryImg from '/src/assets/icon-delivery.png'
 import DataCart from '../../Data/Cart.json';
@@ -6,18 +6,9 @@ import DataCart from '../../Data/Cart.json';
 export default function Cart() {
   const [cartItems, setCartItems] = useState(DataCart);
 
-  const [totalPrice, setTotalPrice] = useState(0);
-  const [totalItems, setTotalItems] = useState(0);
-  const [freeDelivery, setFreeDelivery] = useState(false);
-
-  useEffect(() => {
-    const itemsCount = cartItems.reduce((sum, item) => sum + item.quantity, 0);
-    const price = cartItems.reduce((sum, item) => sum + (item.price * item.quantity), 0);
-
-    setTotalItems(itemsCount);
-    setTotalPrice(price);
-    setFreeDelivery(itemsCount > 7 || price > 2500);
-  }, [cartItems]);
+  const totalItems = cartItems.reduce((sum, item) => sum + item.quantity, 0);
+  const totalPrice = cartItems.reduce((sum, item) => sum + (item.price * item.quantity), 0);
+  const freeDelivery = totalItems > 7 || totalPrice > 2500;
 
   const changeQuantity = (id, change) => {
     const arr = cartItems.map(item => {
