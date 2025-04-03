@@ -1,0 +1,22 @@
+
+@import url('https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,200..1000;1,200..1000&display=swap');
+
+$font: "Nunito", sans-serif;
+
+$white: #FFF;
+$light-orange: #FFAB08;
+$black: #000;
+$orange: #FF7020;
+$dark-orange: #F86310;
+$dark-white: #F2F2F3;
+$light-gray: #B1B1B1;
+$gray: #ACACAC;
+
+
+@function rem($pixels) {
+  @return ($pixels / 16) + rem;
+}
+
+$font-size-24-16: clamp(1rem, -0.5rem + 3.125vw, 1.5rem);
+$font-size-16-12: clamp(0.75rem, 0rem + 1.563vw, 1rem);
+$font-size-50-36: clamp(2.25rem, 1.25rem + 2.083vw, 3.125rem);
