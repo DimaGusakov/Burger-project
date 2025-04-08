@@ -11,7 +11,8 @@ $dark-orange: #F86310;
 $dark-white: #F2F2F3;
 $light-gray: #B1B1B1;
 $gray: #ACACAC;
-
+$gray: #F9F9F9;
+$dark-gray: #B1B1B1;
 
 @function rem($pixels) {
   @return ($pixels / 16) + rem;

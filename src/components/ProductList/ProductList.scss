@@ -1,4 +1,4 @@
-@import "../../styles/vars.scss";
+@use "../../styles/vars.scss" as *;
 .product-list-container {
   padding-top: 50px;
   display: flex;
@@ -14,18 +14,18 @@
 
 .product-grid {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
+  grid-template-columns: repeat(3, minmax(300px, 1fr));
   grid-column-gap: 30px;
   grid-row-gap: 30px;
 }
 
-@media (max-width: 1284px) {
+@media (max-width: 1352px) {
   .product-grid {
-    grid-template-columns: repeat(2, 1fr);
+    grid-template-columns: repeat(2, minmax(300px, 1fr));
   }
 }
 
-@media (max-width: 980px) {
+@media (max-width: 996px) {
   .product-grid {
     grid-template-columns: repeat(4, minmax(145px, 1fr));
     grid-column-gap: 20px;
@@ -33,9 +33,9 @@
   }
 }
 
-@media (max-width: 650px) {
+@media (max-width: 696px) {
   .product-grid {
-    grid-template-columns: repeat(3,1fr);
+    grid-template-columns: repeat(3,minmax(145px,1fr));
   }
 }
 @media (max-width: 524px) {

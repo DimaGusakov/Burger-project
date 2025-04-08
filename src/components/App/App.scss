@@ -1,4 +1,4 @@
-@use '../../styles/vars' as *;
+@use '../../styles/vars.scss' as *;
 
 * {
   box-sizing: border-box;
@@ -27,10 +27,9 @@ body {
   color: $black;
 }
 .container{
-  max-width: calc(rem(1290) + rem(10)*2);
+  max-width: clamp(60rem, 9.231rem + 79.327vw, 80.625rem);
   width: 100%;
-  padding: 0 rem(10);
-  margin: 0 auto;
+  margin-inline: auto;
 }
 
 main{
@@ -44,11 +43,11 @@ main{
 
 @media (max-width: 1024px)  {
   .container{
-    max-width: calc(rem(960) + rem(10)*2);
+    max-width: clamp(40rem, -20rem + 125vw, 60rem)
   }
 }
 
-@media (max-width: 980px)  {
+@media (max-width: 996px)  {
   main {
     .container{
       flex-direction: column;
@@ -59,7 +58,7 @@ main{
 
 @media (max-width: 769px)  {
   .container{
-    max-width: calc(rem(640) + rem(10)*2);
+    max-width: clamp(18.75rem, 3.571rem + 75.893vw, 40rem)
   }
 }
 

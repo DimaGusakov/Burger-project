@@ -4,8 +4,9 @@ import DeliveryImg from '/src/assets/icon-delivery.png'
 import {changeQuantity} from './helper/helper.js';
 import { useState } from 'react';
 
-export default function Cart({stateCart}) {
+export default function Cart({stateCart, stateDeliveryModal}) {
   const {cart, setCart} = stateCart;
+  const {modalDeliveryActive, setModalDeliveryActive} = stateDeliveryModal;
   const count = cart.reduce((sum, item) => sum + item.quantity, 0);
   const price = cart.reduce((sum, item) => sum + (item.price * item.quantity), 0);
   const freeDelivery = count > 7 || price > 2500;
@@ -71,7 +72,7 @@ export default function Cart({stateCart}) {
                 <p className="total-price">{price}₽</p>
               </div>
 
-              <button className="checkout-btn">Оформить заказ</button>
+              <button className="checkout-btn" onClick={() => setModalDeliveryActive(true)}>Оформить заказ</button>
 
               {freeDelivery && (
                 <div className="delivery-info">

@@ -1,11 +1,9 @@
-@import './../../styles/_vars.scss';
-
-
+@use "../../styles/vars.scss" as *;
 
 header {
   background-image: url('./../../assets/header-bg2.png');
   background-repeat: no-repeat;
-  //background-size: cover;
+  background-size: 180rem; // 2880px -> 611px
   padding-top: 24px;
   position: relative;
   background-position: bottom;
@@ -17,14 +15,12 @@ header {
   display: flex;
   justify-content: center;
   margin-bottom: 21.85px;
-
 }
 
 .header__inner{
   display: flex;
   gap: 21px;
   font-family: $font;
-  //align-items: center;
   justify-content: center;
 }
 .header__text{
@@ -64,18 +60,45 @@ header {
     margin-left: 12px;
   }
 }
+.header__burger{
+  img{
 
-@media (max-width: 650px) {
+    max-width: 20.375rem;
+    width: 100%;
+  }
+}
+
+
+@media (max-width: 1024px) {
+  header {
+    min-height: clamp(21.813rem, -0.125rem + 45.703vw, 29.125rem);
+    background-size: clamp(158.75rem, 95rem + 132.813vw, 180rem);
+  }
+  .header__burger {
+    img{
+      max-width: clamp(14.188rem, -4.375rem + 38.672vw, 20.375rem);
+
+    }
+  }
+  .header__text {
+    div {
+      gap: clamp(1.625rem, -3.25rem + 10.156vw, 3.25rem);
+    }
+  }
+}
+@media (max-width: 768px) {
+  header {
+    background-size: clamp(38.188rem, -47.929rem + 430.58vw, 158.75rem);
+  }
+}
+
+@media (max-width: 670px) {
   .header__inner {
     flex-direction: column-reverse;
     align-items: center;
   }
-  .header__burger {
-    img {
-      max-width: clamp(12.313rem, 6.07rem + 31.212vw, 18.75rem);
-      width: 100%;
-    }
-  }
+
+  
   .header__text {
     margin-top: 7px;
     div {

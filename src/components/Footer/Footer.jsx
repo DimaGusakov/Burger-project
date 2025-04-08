@@ -1,5 +1,6 @@
 import './Footer.scss'
-import VK from './../../assets/vk.svg'
+import VK from './../../assets/vk.svg?react'
+import Telegram from './../../assets/telegram.svg?react'
 export default function Footer() {
   return (
     <footer>
@@ -17,10 +18,10 @@ export default function Footer() {
               <p>Мы в соцсетях</p>
               <div>
                 <a href="#">
-                  <img src={VK} alt="VK"/>
+                  <VK />
                 </a>
                 <a href="#">
-                  <img src="src/assets/telegram.svg" alt="Telegram"/>
+                  <Telegram />
                 </a>
               </div>
             </div>

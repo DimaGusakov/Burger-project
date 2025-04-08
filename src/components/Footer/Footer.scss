@@ -1,4 +1,4 @@
-@import "./../../styles/_vars.scss";
+@use "../../styles/vars.scss" as *;
 
 footer {
   padding: 51px 0 40px 0;
@@ -66,6 +66,13 @@ footer {
   div{
     display: flex;
     gap: 16px;
+    a{
+      color: $dark-orange;
+      transition: all 0.3s ease;
+      &:hover {
+        color: $light-orange;
+      }
+    }
   }
 }
 .footer__bottom {

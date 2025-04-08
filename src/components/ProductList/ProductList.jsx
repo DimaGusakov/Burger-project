@@ -1,10 +1,8 @@
 import { ProductCard } from '../ProductCard/ProductCard.jsx'
 import './ProductList.scss'
-export default function ProductList({ navActive, stateProducts, stateCart }) {
-  const {cart, setCart} = stateCart
+export default function ProductList({ navActive, stateProducts, stateModal, stateSelectedProduct }) {
   const { products, setProducts } = stateProducts;
   const productArr = products[navActive]
-
 
   return (
     <section className="product-list-container">
@@ -12,8 +10,13 @@ export default function ProductList({ navActive, stateProducts, stateCart }) {
       <div className="product-grid">
         {
           productArr.items.map(product => (
-            
-            <ProductCard stateCart={stateCart} key={product.id} product={product} />
+            <ProductCard 
+              stateModal={stateModal} 
+              navActive={navActive} 
+              key={product.id} 
+              product={product} 
+              stateSelectedProduct={stateSelectedProduct}
+            />
           ))
         }
       </div>
