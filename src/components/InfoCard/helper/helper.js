@@ -11,6 +11,7 @@ export default function addToCart(product, cart, setCart) {
   }
   
   setCart(newCart);
+  product.quantity = 1;
 }
 
 

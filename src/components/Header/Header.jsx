@@ -1,8 +1,13 @@
 import LogoImg from './../../assets/logo.svg';
-import BurgerImg from './../../assets/burger-img.svg';
+import BurgerImg from './../../assets/burger-img.png';
 import './Header.scss';
+import addToCart from '../InfoCard/helper/helper'
 
-export default function Header() {
+export default function Header( {stateCart, stateProducts}) {
+  const {cart, setCart} = stateCart
+  const {products} = stateProducts
+  const productRandom = products.burgers.items[Math.floor(Math.random() * products.burgers.items.length)]
+  
   return (
     <header className="header">
       <div className="header__logo">
@@ -17,7 +22,7 @@ export default function Header() {
             <h1>Только самые <strong>сочные бургеры!</strong></h1>
             <p>Бесплатная доставка от 599₽</p>
           </div>
-          <button>Добавить</button>
+          <button onClick={() => addToCart(productRandom, cart, setCart)}>Добавить</button>
         </div>
       </div>
     </header>

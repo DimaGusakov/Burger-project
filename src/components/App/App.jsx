@@ -3,50 +3,47 @@ import { useState } from 'react'
 import Header from "../Header/Header.jsx";
 import Nav from "../Nav/Nav.jsx";
 import Cart from '../Cart/Cart.jsx'
-import ModalDelivery from '../ModalDelivery/ModalDelivery.jsx'
+import ModalContent from '../ModalContent/ModalContent.jsx'
 import productsData from './../../Data/products.json'
 import ProductList from '../ProductList/ProductList.jsx'
 import './App.scss'
 import Footer from "../Footer/Footer.jsx";
-import ModalInfoCart from '../ModalInfoCart/ModalInfoCart.jsx'
 function App() {
   const [cart, setCart] = useState([])
   const [navActive, setNavActive] = useState("burgers")
   const [products, setProducts] = useState(productsData)
   const [modalActive, setModalActive] = useState(false)
-  const [modalDeliveryActive, setModalDeliveryActive] = useState(false)
   const [selectedProduct, setSelectedProduct] = useState(null)
-
+  
+  const [modalContent, setModalContent] = useState(null)
   const stateModal = { modalActive, setModalActive }
-  const stateDeliveryModal = { modalDeliveryActive, setModalDeliveryActive }
+
+  
+  const stateModalContent = { modalContent, setModalContent }
   const stateCart = { cart, setCart }
   const stateNav = { navActive, setNavActive }
   const stateProducts = { products, setProducts }
   const stateSelectedProduct = { selectedProduct, setSelectedProduct }
-
   return (
     <>
-      <Header />
+      <Header stateCart={stateCart} stateProducts={stateProducts} />
       <Nav stateNav={stateNav} />
-      <ModalInfoCart 
-        stateModal={stateModal} 
-        stateCart={stateCart}   
-        stateSelectedProduct={stateSelectedProduct} 
-      />
+      
       <main>
         <div className="container">
-          <Cart stateCart={stateCart} stateDeliveryModal={stateDeliveryModal} />
+          <Cart stateCart={stateCart} stateModalContent={stateModalContent} stateModal={stateModal} />
           <ProductList
-            stateModal={stateModal}
             navActive={navActive}
             stateProducts={stateProducts}
             stateSelectedProduct={stateSelectedProduct}
-
+            stateModal={stateModal}
+            stateCart={stateCart}
+            stateModalContent={stateModalContent}
           />
         </div>
       </main>
       <Footer/>
-      <ModalDelivery stateDeliveryModal={stateDeliveryModal} />
+      <ModalContent stateCart={stateCart} stateModal={stateModal} stateModalContent={stateModalContent} stateSelectedProduct={stateSelectedProduct} />
     </>
   )
 }

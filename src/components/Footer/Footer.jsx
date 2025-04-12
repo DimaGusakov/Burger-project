@@ -1,6 +1,7 @@
 import './Footer.scss'
-import VK from './../../assets/vk.svg?react'
-import Telegram from './../../assets/telegram.svg?react'
+import VKIcon from '../icons/VKIcon'
+import TGIcon from '../icons/TGIcon'
+import PhoneIcon from '../icons/PhoneIcon'
 export default function Footer() {
   return (
     <footer>
@@ -12,16 +13,16 @@ export default function Footer() {
           <div className="footer__info">
             <div className="footer__info-phone">
               <p>Номер для заказа</p>
-              <a href="tel:+79308333811"><img src="src/assets/phone.svg" alt="Телефон"/>+7(930)833-38-11</a>
+              <a href="tel:+79308333811"><PhoneIcon/>+7(930)833-38-11</a>
             </div>
             <div className="footer__info-social">
               <p>Мы в соцсетях</p>
               <div>
                 <a href="#">
-                  <VK />
+                  <VKIcon />
                 </a>
                 <a href="#">
-                  <Telegram />
+                  <TGIcon />
                 </a>
               </div>
             </div>

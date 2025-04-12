@@ -1,0 +1,56 @@
+@use "../../styles/vars.scss" as *;
+
+
+.modal__content-product {
+  position: relative;
+  max-width: 684px;
+  width: 100%;
+  padding: 24px 24px 36px 24px;
+  border-radius: 24px;
+  display: flex;
+  flex-direction: column;
+  background-color: $white;
+  gap: 24px;
+
+  h3 {
+    font-size: 2.5rem;
+    font-weight: 600;
+    line-height: 120%;
+  }
+}
+
+
+.modal__content-delivery {
+  position: relative;
+  max-width: 684px;
+  width: 100%;
+
+  background-color: $gray;
+  border-radius: 24px;
+  display: flex;
+}
+
+@media (max-width: 1024px) {
+  .modal__content-product {
+    max-width: clamp(32.75rem, 2.75rem + 62.5vw, 42.75rem);
+    padding: clamp(1rem, -0.5rem + 3.125vw, 1.5rem) clamp(1rem, -0.5rem + 3.125vw, 1.5rem) clamp(1.5rem, -0.75rem + 4.688vw, 2.25rem)  clamp(1rem, -0.5rem + 3.125vw, 1.5rem);
+    h3 {
+      font-size: clamp(1.75rem, -0.5rem + 4.688vw, 2.5rem);
+    }
+  }
+  .modal__content-delivery {
+    max-width: clamp(32.75rem, 2.75rem + 62.5vw, 42.75rem);
+  }
+}
+
+@media (max-width: 524px) {
+  .modal__content-product, .modal__content-delivery {
+    max-width: 100vw;
+    width: 100%;
+    min-height: 100vh;
+    height: 100%;
+    border-radius: 0;
+    padding: 32px 10px;
+  }
+ 
+}
