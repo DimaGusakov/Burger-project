@@ -1,14 +1,14 @@
 @use "../../styles/vars.scss" as *;
 
 footer {
-  padding: 51px 0 40px 0;
+  padding: 52px 0 40px 0;
   margin-top: 100px;
   background-color: $white;
 
   .container {
     display: flex;
     flex-direction: column;
-    gap: 44px;
+    gap: 29px;
   }
 }
 
@@ -20,9 +20,10 @@ footer {
 }
 .footer__logo {
   a {
+    display: flex;
     img {
-      max-width: clamp(12.375rem, 4.804rem + 15.774vw, 19rem);
       width: 100%;
+      margin-top: -4px;
     }
   }
 }
@@ -35,7 +36,7 @@ footer {
 
   div {
     p {
-      font-size: clamp(1.125rem, 1.018rem + 0.536vw, 1.5rem);
+      font-size: 1.5rem;
       font-weight: 400;
       line-height: 100%;
     }
@@ -51,7 +52,7 @@ footer {
     display: flex;
     align-items: center;
     gap: 4px;
-    font-size: clamp(0.75rem, 0.679rem + 0.357vw, 1rem);
+    font-size: 1rem;
     font-weight: 400;
     line-height: 130%;
     color: $black;
@@ -59,14 +60,14 @@ footer {
   }
 }
 
-.footer__info-social{
+.footer__info-social {
   display: flex;
   flex-direction: column;
-  gap: 22px;
-  div{
+  gap: 21px;
+  div {
     display: flex;
     gap: 16px;
-    a{
+    a {
       color: $dark-orange;
       transition: all 0.3s ease;
       &:hover {
@@ -80,28 +81,58 @@ footer {
   flex-direction: column;
   gap: 4px;
   p {
-    font-size: clamp(0.75rem, 0.679rem + 0.357vw, 1rem);
+    font-size: 0.75rem;
     font-weight: 400;
-    line-height: 16px;
+    line-height: 1rem;
   }
 }
-
 
 @media (max-width: 1024px) {
+  footer {
+    margin-top: clamp(4.688rem, 0rem + 9.766vw, 6.25rem);
+    padding: clamp(2.625rem, 0.75rem + 3.906vw, 3.25rem) 0 clamp(1.625rem, -1rem + 5.469vw, 2.5rem) 0;
+  }
   .footer__info {
     max-width: 418px;
+    div {
+      p {
+        font-size: clamp(1.125rem, 0rem + 2.344vw, 1.5rem);
+      }
+    }
+  }
+  .footer__info-social {
+    gap: clamp(0.438rem, -2.188rem + 5.469vw, 1.313rem);
+  }
+  .footer__info-phone {
+    gap: clamp(0.375rem, -3rem + 7.031vw, 1.5rem);
+    a {
+      font-size: clamp(0.75rem, 0rem + 1.563vw, 1rem);
+    }
   }
 }
-
-@media (max-width: 768px) {
+@media (max-width: 846px) {
   .footer__top {
     flex-direction: column;
-    gap: 36px;
+    gap: 34px;
   }
   .footer__info {
     max-width: 453px;
   }
+  .footer__logo {
+    a {
+      img {
+        max-width: 198px;
+      }
+    }
+  }
+  footer {
+    .container {
+      gap: 34px;
+    }
+  }
 }
+
+
 @media (max-width: 398px) {
   footer {
     margin-top: 80px;
@@ -109,7 +140,6 @@ footer {
     .container {
       gap: 34px;
     }
-
   }
   .footer__info {
     flex-direction: column;

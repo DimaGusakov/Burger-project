@@ -25,11 +25,19 @@
   }
 }
 
+@media (max-width: 1024px) { 
+  .product-list-container {
+    gap: clamp(0.938rem, -0.75rem + 3.516vw, 1.5rem);
+    h2 {
+      font-size: clamp(1.75rem, -0.5rem + 4.688vw, 2.5rem);
+    }
+  }
+}
 @media (max-width: 996px) {
   .product-grid {
     grid-template-columns: repeat(4, minmax(145px, 1fr));
     grid-column-gap: 20px;
-    grid-row-gap: 20px;
+    grid-row-gap: 14px;
   }
 }
 

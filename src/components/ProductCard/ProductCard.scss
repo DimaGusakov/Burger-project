@@ -8,8 +8,7 @@
   border-radius: 18px;
   img {
     cursor: pointer;
-    margin-bottom: 8px;
-    // max-height: clamp(7.5rem, 0.357rem + 14.881vw, 13.75rem);
+    margin-bottom: 9px;
     height: 100%;
   }
   h3 {
@@ -57,12 +56,13 @@
 }
 }
 
-@media (max-width: 980px) {
+@media (max-width: 996px) {
   .product-card {
     padding: 4px;
     gap: 4px;
     img {
       margin-bottom: 6px;
+      min-height: 120px;
       
     }
     p {

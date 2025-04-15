@@ -1,16 +1,20 @@
 @use "../../styles/vars.scss" as *;
 
-
-.modal__content-product {
+.modal__content-product, .modal__content-delivery {
   position: relative;
   max-width: 684px;
+  max-height: 432px;
+  height: 100%;
   width: 100%;
-  padding: 24px 24px 36px 24px;
   border-radius: 24px;
   display: flex;
+}
+
+.modal__content-product {
+  padding: 24px 24px 36px 24px;
   flex-direction: column;
   background-color: $white;
-  gap: 24px;
+  gap: 25px;
 
   h3 {
     font-size: 2.5rem;
@@ -20,18 +24,19 @@
 }
 
 
-.modal__content-delivery {
-  position: relative;
-  max-width: 684px;
-  width: 100%;
 
+.modal__content-delivery {
   background-color: $gray;
-  border-radius: 24px;
-  display: flex;
+
 }
 
 @media (max-width: 1024px) {
   .modal__content-product {
+    max-height: clamp(20.25rem, 0rem + 42.188vw, 27rem);
+  }
+  
+  .modal__content-product {
+    gap: clamp(1rem, -0.688rem + 3.516vw, 1.563rem);
     max-width: clamp(32.75rem, 2.75rem + 62.5vw, 42.75rem);
     padding: clamp(1rem, -0.5rem + 3.125vw, 1.5rem) clamp(1rem, -0.5rem + 3.125vw, 1.5rem) clamp(1.5rem, -0.75rem + 4.688vw, 2.25rem)  clamp(1rem, -0.5rem + 3.125vw, 1.5rem);
     h3 {

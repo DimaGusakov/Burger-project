@@ -19,10 +19,10 @@ export default function Header( {stateCart, stateProducts}) {
         </div>
         <div className="header__text">
           <div>
-            <h1>Только самые <strong>сочные бургеры!</strong></h1>
+            <h1>Только самые <span>сочные бургеры!</span></h1>
             <p>Бесплатная доставка от 599₽</p>
           </div>
-          <button onClick={() => addToCart(productRandom, cart, setCart)}>Добавить</button>
+          <button className='header__button none' onClick={() => addToCart(productRandom, cart, setCart)}>Добавить</button>
         </div>
       </div>
     </header>

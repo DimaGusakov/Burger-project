@@ -8,7 +8,7 @@
 .modal-info-cart__info {
   display: flex;
   flex-direction: column;
-  gap: 4px;
+  gap: 5px;
   max-width: 344px;
   .modal-info-cart__description {
     font-size: 1rem;
@@ -32,7 +32,7 @@
     flex-direction: column;
     gap: 2px;
     p {
-      margin-bottom: 2px;
+      margin-bottom: 3px;
     }
     li {
       font-weight: 400;
@@ -42,6 +42,7 @@
 
 .modal-info-cart__bottom {
   display: flex;
+  margin-top: auto;
   justify-content: space-between;
   align-items: center;
   .add-to-cart {
@@ -69,7 +70,7 @@
     }
     .add-to-cart__counter {
       display: flex;
-      gap: 18px;
+      gap: 17px;
       align-items: center;
       background-color: $dark-white;
       border-radius: 12px;

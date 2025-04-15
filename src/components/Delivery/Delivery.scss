@@ -2,7 +2,7 @@
 
 
 .input {
-  padding: 12px;
+  padding: 11px;
   background-color: $white;
   border: 1px solid $dark-white;
   width: 100%;
@@ -10,7 +10,9 @@
   outline: none;
   transition: all 0.3s ease;
   font-family: $font;
-  
+  font-size: 0.75rem;
+  line-height: 130%;
+  font-weight: 400;
   &::placeholder {
     color: $dark-gray;
   }
@@ -31,10 +33,9 @@
   border-bottom-left-radius: 24px;
 }
 .modal-delivery__form {
-  padding: 44px 24px 24px 24px;
+  padding: 45px 24px 24px 24px;
   display: flex;
   flex-direction: column;
-
   gap: 16px;
   h4 {
     font-size: 1.5rem;
@@ -45,22 +46,29 @@
 .modal-delivery__form-info{
   display: flex;
   flex-direction: column;
-  gap: 8px;
+  gap: 9px;
 }
 .modal-delivery__form-delivery-type {
   display: flex;
   flex-direction: column;
-  gap: 16px;
+  gap: 17px;
   .delivery-type {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
     div {
       display: flex;
       align-items: center;
       gap: 8px;
       label {
         cursor: pointer;
+        font-size: 0.75rem;
+        line-height: 1rem;
+        font-weight: 400;
       }
       .delivery-type__radio {
         position: absolute;
+
         cursor: pointer;
         z-index: 1;
         opacity: 0;
@@ -76,7 +84,7 @@
         width: 12px;
         height: 12px;
         border-radius: 50%;
-        border: 1px solid $dark-white;
+        box-shadow: 0 0 0 1px $dark-white;
         &::before {
           content: "";
           width: 6px;
