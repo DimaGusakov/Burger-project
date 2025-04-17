@@ -7,20 +7,20 @@ import ResetPassword from '../Auth/resetPassword.jsx'
 import { useEffect } from 'react'
 import { auth } from '../../firebase/firebase.js'
 import { onAuthStateChanged } from 'firebase/auth'
+import Profile from '../Profile/Profile.jsx';
 import './App.scss'
-import Footer from "../Footer/Footer.jsx";
+
 function App() {
   const navigate = useNavigate()
 
   useEffect(() => {
-    const unsubscribe = onAuthStateChanged(auth, (user) => {
+    onAuthStateChanged(auth, (user) => {
       if (user) {
         navigate('/home')
       } else {
         navigate('/register')
       }
     })
-    return () => unsubscribe()
   }, [])
   return (
     <>
@@ -29,6 +29,7 @@ function App() {
       <Route path="/register" element={<Register/>}/>
       <Route path="/login" element={<Login/>}/>
       <Route path="/reset-password" element={<ResetPassword/>}/>
+      <Route path="/profile" element={<Profile/>}/>
     </Routes>
     </>
   )

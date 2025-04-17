@@ -3,8 +3,10 @@ import deliveryImg from '../../assets/donut.png'
 import { useState } from 'react'
 import { createUserWithEmailAndPassword } from 'firebase/auth'
 import { auth } from '../../firebase/firebase.js'
-import './register.scss'
+import { db }  from '../../firebase/firebase.js'
+import { doc, setDoc } from 'firebase/firestore'
 import { useNavigate } from 'react-router'
+import './register.scss'
 
 export default function Register() {
   const navigate = useNavigate()
@@ -25,19 +27,29 @@ export default function Register() {
       setError('Пароли не совпадают');
       return
     }
-    createUserWithEmailAndPassword(auth, name, email, password)
-      .then((user) => {
+    createUserWithEmailAndPassword(auth, email, password)
+      .then((userCredential) => {
+        const user = userCredential.user;
+        const userData = {
+          name: name,
+          email: email,
+          role: 'user',
+          createdAt: new Date()
+        }
+        const userDocRef = doc(db, 'users', user.uid)
+        setDoc(userDocRef, userData)
         setName('');
         setEmail('');
         setPassword('');
         setPasswordConfirm('');
         setError('');
-        navigate('/home')
+        navigate('/home');
       })
       .catch((error) => {
-        setError("Пользователь с таким email уже существует");
+        setError(error.message);
       })
   }
+  
   return (
     <div className="register">
       <div className="register__wrapper">

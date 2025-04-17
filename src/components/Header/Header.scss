@@ -10,7 +10,15 @@ header {
   min-height: 466px;
   margin-bottom: 40px;
 }
-
+.header__user {
+  position: absolute;
+  cursor: pointer;
+  top: 21px;
+  right: 21px;
+  border: none;
+  background-color: transparent;
+  color: $white;
+}
 .header__logo {
   display: flex;
   justify-content: center;

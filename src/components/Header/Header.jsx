@@ -1,8 +1,9 @@
 import LogoImg from './../../assets/logo.svg';
 import BurgerImg from './../../assets/burger-img.png';
 import './Header.scss';
-import addToCart from '../InfoCard/helper/helper'
-
+import addToCart from '../InfoCard/helper/helper';
+import UserIcon from '../icons/UserIcon';
+import { Link } from 'react-router';
 export default function Header( {stateCart, stateProducts}) {
   const {cart, setCart} = stateCart
   const {products} = stateProducts
@@ -10,8 +11,13 @@ export default function Header( {stateCart, stateProducts}) {
   
   return (
     <header className="header">
+      <Link to="/profile" className="header__user">
+        <UserIcon />
+      </Link>
       <div className="header__logo">
         <a href="#"><img src={LogoImg} alt=""/></a>
+
+       
       </div>
       <div className="header__inner">
         <div className="header__burger">
