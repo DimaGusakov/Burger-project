@@ -9,7 +9,6 @@
   img {
     cursor: pointer;
     margin-bottom: 9px;
-    height: 100%;
   }
   h3 {
     font-size: $font-size-24-16;
@@ -44,6 +43,7 @@
   font-weight: 400;
   line-height: 100%;
   color: $black;
+  margin-top: auto;
   &:hover {
     background-color: $light-orange;
     color: $white;

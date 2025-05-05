@@ -1,23 +1,24 @@
-import { Link } from 'react-router'
+import { Link, useNavigate } from 'react-router'
 import deliveryImg from '../../assets/donut.png'
 import { useState } from 'react'
 import { createUserWithEmailAndPassword } from 'firebase/auth'
 import { auth } from '../../firebase/firebase.js'
-import { db }  from '../../firebase/firebase.js'
-import { doc, setDoc } from 'firebase/firestore'
-import { useNavigate } from 'react-router'
+import { useAddUserMutation } from '../../Service/databaseApi.js'
 import './register.scss'
 
 export default function Register() {
   const navigate = useNavigate()
-  const [name, setName] = useState('');
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
-  const [passwordConfirm, setPasswordConfirm] = useState('');
-  const [error, setError] = useState('');
-  const [passwordVisible, setPasswordVisible] = useState(false);
-  const [passwordConfirmVisible, setPasswordConfirmVisible] = useState(false);
-  const handleSubmit = (e) => {
+  const [name, setName] = useState('')
+  const [email, setEmail] = useState('')
+  const [password, setPassword] = useState('')
+  const [passwordConfirm, setPasswordConfirm] = useState('')
+  const [error, setError] = useState('')
+  const [passwordVisible, setPasswordVisible] = useState(false)
+  const [passwordConfirmVisible, setPasswordConfirmVisible] = useState(false)
+  
+  const [addUser] = useAddUserMutation()
+
+  const handleSubmit = e => {
     e.preventDefault();
     if (name === '' || email === '' || password === '' || passwordConfirm === '') {
       setError('Заполните все поля');
@@ -28,16 +29,19 @@ export default function Register() {
       return
     }
     createUserWithEmailAndPassword(auth, email, password)
-      .then((userCredential) => {
-        const user = userCredential.user;
-        const userData = {
-          name: name,
-          email: email,
-          role: 'user',
-          createdAt: new Date()
-        }
-        const userDocRef = doc(db, 'users', user.uid)
-        setDoc(userDocRef, userData)
+      .then((userCredential) => { 
+        const userId = userCredential.user.uid
+        return addUser ({
+          userId,
+          userData: {
+            name, 
+            email,
+            role: "Пользователь", 
+            createdAt: new Date().toISOString()
+          }
+        })
+      })
+      .then(() => {
         setName('');
         setEmail('');
         setPassword('');
@@ -58,6 +62,7 @@ export default function Register() {
         </div>
         <form onSubmit={handleSubmit} className='register__form'>
           {error && <p className='register__form-error'>{error}</p>}
+
           <h4>Регистрация</h4>
           <div className='register__form-info'>
             <input type='text' value={name} onChange={(e) => setName(e.target.value)} className='input user-name' placeholder='Имя' />

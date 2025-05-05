@@ -1,6 +1,11 @@
 @use "../../styles/vars.scss" as *;
 
-
+.loading-delivery{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+}
 .input {
   padding: 11px;
   background-color: $white;

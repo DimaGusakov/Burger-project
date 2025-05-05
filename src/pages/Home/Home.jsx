@@ -1,11 +1,11 @@
 import { useState } from 'react'
-import Header from "../Header/Header.jsx";
-import Nav from "../Nav/Nav.jsx";
-import Cart from '../Cart/Cart.jsx'
-import ModalContent from '../ModalContent/ModalContent.jsx'
+import Header from "../../components/Header/Header.jsx";
+import Nav from "../../components/Nav/Nav.jsx";
+import Cart from '../../components/Cart/Cart.jsx'
+import ModalContent from '../../components/ModalContent/ModalContent.jsx'
 import productsData from './../../Data/products.json'
-import ProductList from '../ProductList/ProductList.jsx'
-import Footer from '../Footer/Footer.jsx'
+import ProductList from '../../components/ProductList/ProductList.jsx'
+import Footer from '../../components/Footer/Footer.jsx'
 
 export default function Home() {
   const [cart, setCart] = useState([])

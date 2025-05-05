@@ -7,11 +7,7 @@ export default function ModalContent({ stateModalContent, stateModal, stateCart,
   const { selectedProduct, setSelectedProduct } = stateSelectedProduct;
   const { modalActive, setModalActive } = stateModal;
   const { cart, setCart } = stateCart;
-    
-  
-
-
-    return (
+  return (
     <Modal stateModal={stateModal} stateModalContent={stateModalContent}>
         {modalContent === 'product' && <InfoCart stateSelectedProduct={stateSelectedProduct} stateCart={stateCart} stateModal={stateModal} stateModalContent={stateModalContent} />}
         {modalContent === 'delivery' && <Delivery stateModal={stateModal} stateModalContent={stateModalContent} />}

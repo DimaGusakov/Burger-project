@@ -1,4 +1,6 @@
 import deliveryImg from '../../assets/donut.png'
+import { auth } from '../../firebase/firebase';
+import { useGetUserQuery } from "../../Service/databaseApi";
 
 import { useState } from 'react'
 import './Delivery.scss'
@@ -6,6 +8,12 @@ export default function Delivery({ stateModal, stateModalContent }) {
   const { modalContent, setModalContent } = stateModalContent;
   const [deliveryType, setDeliveryType] = useState('delivery');
 
+  const userId = auth.currentUser?.uid
+  const { data: userData, isLoading, isError } = useGetUserQuery(userId, {
+    skip: !userId
+  })
+  if (isLoading) return <div className='loading-delivery'>Загрузка...</div>
+  if (isError) return <div>Ошибка при загрузке данных</div>
 
   return (
     <>
@@ -16,8 +24,8 @@ export default function Delivery({ stateModal, stateModalContent }) {
         <h4>Доставка</h4>
 
         <div className='modal-delivery__form-info'>
-          <input className='input' type="text" placeholder='Ваше имя' />
-          <input className='input' type="tel" placeholder='Телефон' />
+          <input onChange={(e) => e.target.value} value={userData.name} className='input' type="text" placeholder='Ваше имя' />
+          <input onChange={(e) => e.target.value} value={userData.phone} className='input' type="tel" placeholder='Телефон' />
         </div>
         <div className='modal-delivery__form-delivery-type'>
           <div className='delivery-type' onChange={(e) => {
