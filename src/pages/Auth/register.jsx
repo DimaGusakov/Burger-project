@@ -1,5 +1,4 @@
 import { Link, useNavigate } from 'react-router'
-import deliveryImg from '../../assets/donut.png'
 import { useState } from 'react'
 import { createUserWithEmailAndPassword } from 'firebase/auth'
 import { auth } from '../../firebase/firebase.js'
@@ -58,7 +57,7 @@ export default function Register() {
     <div className="register">
       <div className="register__wrapper">
         <div className="register__img">
-          <img src={deliveryImg} alt="Доставка" />
+          <img src="/images/donut.png" alt="Доставка" />
         </div>
         <form onSubmit={handleSubmit} className='register__form'>
           {error && <p className='register__form-error'>{error}</p>}

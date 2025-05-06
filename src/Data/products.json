@@ -16,7 +16,7 @@
           "Соус горчичный"
         ],
         "calories": "430",
-        "image": "/src/assets/meat-bomb.png"
+        "image": "/images/meat-bomb.png"
       },
       {
         "id": "2",
@@ -31,7 +31,7 @@
           "Сырный соус"
         ],
         "calories": "430",
-        "image": "/src/assets/super-cheese.png"
+        "image": "/images/super-cheese.png"
       },
       {
         "id": "3",
@@ -46,7 +46,7 @@
           "Сырный соус"
         ],
         "calories": "430",
-        "image": "/src/assets/burger-satisfying.png"
+        "image": "/images/burger-satisfying.png"
       },
       {
         "id": "4",
@@ -61,7 +61,7 @@
           "Сырный соус"
         ],
         "calories": "430",
-        "image": "/src/assets/burger-heavy-hit.png"
+        "image": "/images/burger-heavy-hit.png"
       },
       {
         "id": "5",
@@ -76,7 +76,7 @@
           "Сырный соус"
         ],
         "calories": "430",
-        "image": "/src/assets/burger-classic.png"
+        "image": "/images/burger-classic.png"
       },
       {
         "id": "6",
@@ -91,7 +91,7 @@
           "Соус песто"
         ],
         "calories": "450",
-        "image": "/src/assets/burger-italian.png"
+        "image": "/images/burger-italian.png"
       }
     ]
   },
@@ -111,7 +111,7 @@
           "Специи"
         ],
         "calories": "350",
-        "image": "/src/assets/nachos.png"
+        "image": "/images/nachos.png"
       },
       {
         "id": "8",
@@ -126,7 +126,7 @@
           "Специи"
         ],
         "calories": "320",
-        "image": "/src/assets/potato-fries.png"
+        "image": "/images/potato-fries.png"
       },
       {
         "id": "9",
@@ -141,7 +141,7 @@
           "Специи"
         ],
         "calories": "280",
-        "image": "/src/assets/onion-rings.png"
+        "image": "/images/onion-rings.png"
       },
       {
         "id": "10",
@@ -156,7 +156,7 @@
           "Лимонный сок"
         ],
         "calories": "240",
-        "image": "/src/assets/bruschetta-salmon-guacamole.png"
+        "image": "/images/bruschetta-salmon-guacamole.png"
       },
       {
         "id": "11",
@@ -171,7 +171,7 @@
           "Оливки"
         ],
         "calories": "580",
-        "image": "/src/assets/meat-delicacies.png"
+        "image": "/images/meat-delicacies.png"
       },
       {
         "id": "12",
@@ -186,7 +186,7 @@
           "Тимьян"
         ],
         "calories": "420",
-        "image": "/src/assets/baked-camembert.png"
+        "image": "/images/baked-camembert.png"
       }
     ]
   },
@@ -206,7 +206,7 @@
           "Горчица"
         ],
         "calories": "350",
-        "image": "/src/assets/hotdog-home.png"
+        "image": "/images/hotdog-home.png"
       },
       {
         "id": "14",
@@ -221,7 +221,7 @@
           "Острый соус"
         ],
         "calories": "380",
-        "image": "/src/assets/hotdog-spicy.png"
+        "image": "/images/hotdog-spicy.png"
       },
       {
         "id": "15",
@@ -236,7 +236,7 @@
           "Горчица"
         ],
         "calories": "310",
-        "image": "/src/assets/hotdog-classic.png"
+        "image": "/images/hotdog-classic.png"
       },
       {
         "id": "16",
@@ -251,7 +251,7 @@
           "Маринованные огурцы"
         ],
         "calories": "450",
-        "image": "/src/assets/hussar-dog.png"
+        "image": "/images/hussar-dog.png"
       },
       {
         "id": "17",
@@ -266,7 +266,7 @@
           "Барбекю соус"
         ],
         "calories": "520",
-        "image": "/src/assets/meat-dog.png"
+        "image": "/images/meat-dog.png"
       },
       {
         "id": "18",
@@ -281,7 +281,7 @@
           "Свежие овощи"
         ],
         "calories": "480",
-        "image": "/src/assets/peppi-long-dog.png"
+        "image": "/images/peppi-long-dog.png"
       }
     ]
   },
@@ -301,7 +301,7 @@
           "Соус"
         ],
         "calories": "950",
-        "image": "/src/assets/double-combo-grand.png"
+        "image": "/images/double-combo-grand.png"
       },
       {
         "id": "20",
@@ -316,7 +316,7 @@
           "Соус"
         ],
         "calories": "780",
-        "image": "/src/assets/super-box-for-you.png"
+        "image": "/images/super-box-for-you.png"
       },
       {
         "id": "21",
@@ -331,7 +331,7 @@
           "Напиток"
         ],
         "calories": "670",
-        "image": "/src/assets/strips-combo.png"
+        "image": "/images/strips-combo.png"
       },
       {
         "id": "22",
@@ -346,7 +346,7 @@
           "Соусы"
         ],
         "calories": "1800",
-        "image": "/src/assets/family-set-for-three.png"
+        "image": "/images/family-set-for-three.png"
       },
       {
         "id": "23",
@@ -361,7 +361,7 @@
           "Секретный соус"
         ],
         "calories": "720",
-        "image": "/src/assets/star-combo-julia-peresild.png"
+        "image": "/images/star-combo-julia-peresild.png"
       },
       {
         "id": "24",
@@ -376,7 +376,7 @@
           "Набор соусов"
         ],
         "calories": "2500",
-        "image": "/src/assets/big-company-set.png"
+        "image": "/images/big-company-set.png"
       }
     ]
   },
@@ -396,7 +396,7 @@
           "Фирменный соус"
         ],
         "calories": "520",
-        "image": "/src/assets/shaverma-po-piter.png"
+        "image": "/images/shaverma-po-piter.png"
       },
       {
         "id": "26",
@@ -411,7 +411,7 @@
           "Особый соус"
         ],
         "calories": "280",
-        "image": "/src/assets/shaverma-ai.png"
+        "image": "/images/shaverma-ai.png"
       },
       {
         "id": "27",
@@ -426,7 +426,7 @@
           "Соус чесночный"
         ],
         "calories": "310",
-        "image": "/src/assets/shaverma-chicken-chees.png"
+        "image": "/images/shaverma-chicken-chees.png"
       },
       {
         "id": "28",
@@ -441,7 +441,7 @@
           "Соус тахини"
         ],
         "calories": "450",
-        "image": "/src/assets/village-diner.png"
+        "image": "/images/village-diner.png"
       },
       {
         "id": "29",
@@ -456,7 +456,7 @@
           "Немецкий соус"
         ],
         "calories": "420",
-        "image": "/src/assets/berlin-diner.png"
+        "image": "/images/berlin-diner.png"
       },
       {
         "id": "30",
@@ -471,7 +471,7 @@
           "Хумус"
         ],
         "calories": "350",
-        "image": "/src/assets/vegetarian-doner.png"
+        "image": "/images/vegetarian-doner.png"
       }
     ]
   },
@@ -491,7 +491,7 @@
           "Свежие травы"
         ],
         "calories": "580",
-        "image": "/src/assets/pizza-chili-green.png"
+        "image": "/images/pizza-chili-green.png"
       },
       {
         "id": "32",
@@ -506,7 +506,7 @@
           "Сыр"
         ],
         "calories": "650",
-        "image": "/src/assets/pizza-bavarian.png"
+        "image": "/images/pizza-bavarian.png"
       },
       {
         "id": "33",
@@ -521,7 +521,7 @@
           "Моцарелла"
         ],
         "calories": "540",
-        "image": "/src/assets/pizza-shrimp-pesto.png"
+        "image": "/images/pizza-shrimp-pesto.png"
       },
       {
         "id": "34",
@@ -536,7 +536,7 @@
           "Сыр"
         ],
         "calories": "720",
-        "image": "/src/assets/pizza-meat-mix.png"
+        "image": "/images/pizza-meat-mix.png"
       },
       {
         "id": "35",
@@ -551,7 +551,7 @@
           "Сливочный соус"
         ],
         "calories": "630",
-        "image": "/src/assets/pizza-beef-stroganoff.png"
+        "image": "/images/pizza-beef-stroganoff.png"
       },
       {
         "id": "36",
@@ -566,8 +566,8 @@
           "Свежие овощи"
         ],
         "calories": "560",
-        "image": "/src/assets/pizza-shrimp-sweet-chili.png"
-      }
+        "image": "/images/pizza-shrimp-sweet-chili.png"
+      } 
     ]
   },
   "vok": {
@@ -586,7 +586,7 @@
           "Кунжут"
         ],
         "calories": "380",
-        "image": "/src/assets/wok-vegetarian-rice.png"
+        "image": "/images/wok-vegetarian-rice.png"
       },
       {
         "id": "38",
@@ -601,7 +601,7 @@
           "Тайские специи"
         ],
         "calories": "410",
-        "image": "/src/assets/wok-thai-shrimp.png"
+        "image": "/images/wok-thai-shrimp.png"
       },
       {
         "id": "39",
@@ -616,7 +616,7 @@
           "Азиатский соус"
         ],
         "calories": "450",
-        "image": "/src/assets/wok-pan-asian.png"
+        "image": "/images/wok-pan-asian.png"
       },
       {
         "id": "40",
@@ -631,7 +631,7 @@
           "Кокосовое молоко"
         ],
         "calories": "390",
-        "image": "/src/assets/wok-tom-yum-shrimp.png"
+        "image": "/images/wok-tom-yum-shrimp.png"
       },
       {
         "id": "41",
@@ -646,7 +646,7 @@
           "Соевый соус"
         ],
         "calories": "430",
-        "image": "/src/assets/wok-classic.png"
+        "image": "/images/wok-classic.png"
       },
       {
         "id": "42",
@@ -661,7 +661,7 @@
           "Устричный соус"
         ],
         "calories": "370",
-        "image": "/src/assets/wok-seafood.png"
+        "image": "/images/wok-seafood.png"
       }
     ]
   },
@@ -681,7 +681,7 @@
           "Ягодный соус"
         ],
         "calories": "350",
-        "image": "/src/assets/cheesecake.png"
+        "image": "/images/cheesecake.png"
       },
       {
         "id": "44",
@@ -696,7 +696,7 @@
           "Кокосовый крем"
         ],
         "calories": "290",
-        "image": "/src/assets/tropical-roll.png"
+        "image": "/images/tropical-roll.png"
       },
       {
         "id": "45",
@@ -711,7 +711,7 @@
           "Ванильный сахар"
         ],
         "calories": "210",
-        "image": "/src/assets/mango-passion-pie.png"
+        "image": "/images/mango-passion-pie.png"
       },
       {
         "id": "46",
@@ -726,7 +726,7 @@
           "Вишневый сироп"
         ],
         "calories": "280",
-        "image": "/src/assets/cherry-ice-deluxe.png"
+        "image": "/images/cherry-ice-deluxe.png"
       },
       {
         "id": "47",
@@ -741,7 +741,7 @@
           "Крем"
         ],
         "calories": "85",
-        "image": "/src/assets/macarons.png"
+        "image": "/images/macarons.png"
       },
       {
         "id": "48",
@@ -756,7 +756,7 @@
           "Кофейный соус"
         ],
         "calories": "250",
-        "image": "/src/assets/tiramisu.png"
+        "image": "/images/tiramisu.png"
       }
     ]
   },
@@ -776,7 +776,7 @@
           "Растительное масло"
         ],
         "calories": "90",
-        "image": "/src/assets/cheese-sauce.png"
+        "image": "/images/cheese-sauce.png"
       },
       {
         "id": "50",
@@ -791,7 +791,7 @@
           "Сахар"
         ],
         "calories": "65",
-        "image": "/src/assets/sweet-sour-sauce.png"
+        "image": "/images/sweet-sour-sauce.png"
       },
       {
         "id": "51",
@@ -806,7 +806,7 @@
           "Паприка"
         ],
         "calories": "110",
-        "image": "/src/assets/1000-islands-sauce.png"
+        "image": "/images/1000-islands-sauce.png"
       },
       {
         "id": "52",
@@ -821,7 +821,7 @@
           "Зелень"
         ],
         "calories": "105",
-        "image": "/src/assets/garlic-sauce.png"
+        "image": "/images/garlic-sauce.png"
       },
       {
         "id": "53",
@@ -836,7 +836,7 @@
           "Специи"
         ],
         "calories": "85",
-        "image": "/src/assets/mustard-sauce.png"
+        "image": "/images/mustard-sauce.png"
       },
       {
         "id": "54",
@@ -851,7 +851,7 @@
           "Специи"
         ],
         "calories": "70",
-        "image": "/src/assets/ketchup.png"
+        "image": "/images/ketchup.png"
       }
     ]
   }

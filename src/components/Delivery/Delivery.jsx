@@ -1,4 +1,3 @@
-import deliveryImg from '../../assets/donut.png'
 import { auth } from '../../firebase/firebase';
 import { useGetUserQuery } from "../../Service/databaseApi";
 
@@ -18,7 +17,7 @@ export default function Delivery({ stateModal, stateModalContent }) {
   return (
     <>
       <div className="modal-delivery__img">
-        <img src={deliveryImg} alt="Доставка" />
+        <img src="/images/donut.png" alt="Доставка" />
       </div>
       <form className='modal-delivery__form'>
         <h4>Доставка</h4>

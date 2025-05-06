@@ -1,5 +1,4 @@
 import { Link } from 'react-router'
-import deliveryImg from '../../assets/donut.png'
 import { useState } from 'react'
 import { sendPasswordResetEmail } from 'firebase/auth'
 import { auth } from '../../firebase/firebase.js'
@@ -31,7 +30,7 @@ export default function ResetPassword() {
     <div className="reset-password">
       <div className="reset-password__wrapper">
         <div className="reset-password__img">
-          <img src={deliveryImg} alt="Доставка" />
+          <img src="/images/donut.png" alt="Доставка" />
         </div>
         <form onSubmit={handleSubmit} className='reset-password__form'>
           {error && <p className='reset-password__form-error'>{error}</p>}

@@ -13,6 +13,10 @@ export default function PersonalInfo() {
   const [phone, setPhone] = useState("")
   const [lastName, setLastName] = useState("")
   const [dateBirthday, setDateBirthday] = useState("")
+  const [gender, setGender] = useState("")
+  const [address, setAddress] = useState("")
+  const [location, setLocation] = useState("")
+  const [postalCode, setPostalCode] = useState("")
   
   const [updateUser] = useUpdateUserMutation()
 
@@ -24,10 +28,19 @@ export default function PersonalInfo() {
       setPhone(userData.phone || "")
       setLastName(userData.lastName || "")
       setDateBirthday(userData.dateBirthday || "")
+      setGender(userData.gender || "")
+      setAddress(userData.address || "")
+      setLocation(userData.location || "")
+      setPostalCode(userData.postalCode || "")
     }
   }, [userData]);
 
-  const formSubmit = async () => {
+  const handleGenderSelect = (selectedGender) => {
+    setGender(selectedGender);
+  };
+
+  const formSubmit = async (e) => {
+   
     try {
       const result = await updateUser({
         userId,
@@ -36,12 +49,16 @@ export default function PersonalInfo() {
           email,
           phone,
           lastName,
-          dateBirthday
+          dateBirthday,
+          gender,
+          address,
+          location,
+          postalCode
         }
       });
     } 
     catch (error) {
-      return <div>Ошибка: {error.message}</div>;
+      (`Ошибка при сохранении: ${error.message}`);
     }
   }
   
@@ -56,8 +73,20 @@ export default function PersonalInfo() {
       <div className="gender">
         <label>Пол</label>
         <div>
-          <button>Мужской</button>
-          <button>Женский</button>
+          <button 
+            type="button" 
+            className={gender === "Мужской" ? "active" : ""} 
+            onClick={() => handleGenderSelect("Мужской")}
+          >
+            Мужской
+          </button>
+          <button 
+            type="button" 
+            className={gender === "Женский" ? "active" : ""} 
+            onClick={() => handleGenderSelect("Женский")}
+          >
+            Женский
+          </button>
         </div>
       </div>
 
@@ -101,6 +130,8 @@ export default function PersonalInfo() {
         <input
           type="text"
           name="address"
+          value={address}
+          onChange={(e) => setAddress(e.target.value)}
           placeholder="Введите адрес"
         />
       </div>
@@ -113,7 +144,6 @@ export default function PersonalInfo() {
             name="phone"
             value={phone}
             onChange={(e) => setPhone(e.target.value)}
-
             placeholder="Введите номер телефона"
           />
         </div>
@@ -134,7 +164,8 @@ export default function PersonalInfo() {
           <label>Местоположение</label>
           <select
             name="location"
-
+            value={location}
+            onChange={(e) => setLocation(e.target.value)}
           >
             <option value="Минск, Беларусь">Минск, Беларусь</option>
             <option value="Брест, Беларусь">Брест, Беларусь</option>
@@ -149,13 +180,15 @@ export default function PersonalInfo() {
           <input
             type="text"
             name="postalCode"
+            value={postalCode}
+            onChange={(e) => setPostalCode(e.target.value)}
             placeholder="Введите почтовый индекс"
           />
         </div>
       </div>
 
       <div className="actions">
-        <button>Сохранить изменения</button>
+        <button type="submit">Сохранить изменения</button>
       </div>
     </form>
     

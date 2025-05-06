@@ -1,6 +1,4 @@
 import './Cart.scss';
-import DeliveryImg from '/src/assets/icon-delivery.png'
-
 import {changeQuantity} from './helper/helper.js';
 import { useState } from 'react';
 
@@ -80,7 +78,7 @@ export default function Cart({stateCart, stateModalContent, stateModal}) {
 
               {freeDelivery && (
                 <div className="delivery-info">
-                  <img src={DeliveryImg} alt="Доставка" className="delivery-icon" />
+                  <img src="/images/icon-delivery.png" alt="Доставка" className="delivery-icon" />
                     <p>Бесплатная доставка</p>
                 </div>
               )}

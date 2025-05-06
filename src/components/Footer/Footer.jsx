@@ -8,7 +8,7 @@ export default function Footer() {
       <div className="container">
         <div className="footer__top">
           <div className="footer__logo">
-            <a href="#"><img src="src/assets/footer-logo.svg" alt="Логотип"/></a>
+            <a href="#"><img src="/images/footer-logo.svg" alt="Логотип"/></a>
           </div>
           <div className="footer__info">
             <div className="footer__info-phone">

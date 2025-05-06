@@ -1,5 +1,3 @@
-import LogoImg from './../../assets/logo.svg';
-import BurgerImg from './../../assets/burger-img.png';
 import './Header.scss';
 import addToCart from '../InfoCard/helper/helper';
 import UserIcon from '../icons/UserIcon';
@@ -15,13 +13,13 @@ export default function Header( {stateCart, stateProducts}) {
         <UserIcon />
       </Link>
       <div className="header__logo">
-        <a href="#"><img src={LogoImg} alt=""/></a>
+        <a href="#"><img src="/images/logo.svg" alt=""/></a>
 
        
       </div>
       <div className="header__inner">
         <div className="header__burger">
-          <img src={BurgerImg} alt=""/>
+          <img src="/images/burger-img.png" alt=""/>
         </div>
         <div className="header__text">
           <div>

@@ -2,55 +2,55 @@
   {
     "id": 1,
     "name": "Бургеры",
-    "img": "/src/assets/chesburger-nav.svg",
+    "img": "/images/chesburger-nav.svg",
     "group": "burgers"
   },
   {
     "id": 2,
     "name": "Закуски",
-    "img": "/src/assets/onion-nav.svg",
+    "img": "/images/onion-nav.svg",
     "group": "snacks"
   },
   {
     "id": 3,
     "name": "Хот-доги",
-    "img": "/src/assets/hotdogs-nav.svg",
+    "img": "/images/hotdogs-nav.svg",
     "group": "hotdogs"
   },
   {
     "id": 4,
     "name": "Комбо",
-    "img": "/src/assets/combo-nav.svg",
+    "img": "/images/combo-nav.svg",
     "group": "combos"
   },
   {
     "id": 5,
     "name": "Шаурма",
-    "img": "/src/assets/shurma-nav.svg",
+    "img": "/images/shurma-nav.svg",
     "group": "shurmas"
   },
   {
     "id": 6,
     "name": "Пицца",
-    "img": "/src/assets/pizza-nav.svg",
+    "img": "/images/pizza-nav.svg",
     "group": "pizza"
   },
   {
     "id": 7,
     "name": "Вок",
-    "img": "/src/assets/vok-nav.svg",
+    "img": "/images/vok-nav.svg",
     "group": "vok"
   },
   {
     "id": 8,
     "name": "Десерты",
-    "img": "/src/assets/donut-nav.svg",
+    "img": "/images/donut-nav.svg",
     "group": "desserts"
   },
   {
     "id": 9,
     "name": "Соусы",
-    "img": "/src/assets/souse.svg",
+    "img": "/images/souse.svg",
     "group" : "souses"
   }
 ]

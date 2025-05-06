@@ -1,5 +1,4 @@
 import { Link } from 'react-router'
-import deliveryImg from '../../assets/donut.png'
 import { useState } from 'react'
 import { signInWithEmailAndPassword } from 'firebase/auth'
 import { auth } from '../../firebase/firebase.js'
@@ -43,7 +42,7 @@ export default function Login() {
     <div className="login">
       <div className="login__wrapper">
         <div className="login__img">
-          <img src={deliveryImg} alt="Доставка" />
+          <img src="/images/donut.png" alt="Доставка" />
         </div>
         <form onSubmit={handleSubmit} className='login__form'>
           {error && <p className='login__form-error'>{error}</p>}
