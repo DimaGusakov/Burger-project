@@ -2,15 +2,37 @@ import './Header.scss';
 import addToCart from '../InfoCard/helper/helper';
 import UserIcon from '../icons/UserIcon';
 import { Link } from 'react-router';
+import { useGetUserQuery } from "../../Service/databaseApi";
+import { auth } from "../../firebase/firebase";
+
 export default function Header( {stateCart, stateProducts}) {
   const {cart, setCart} = stateCart
   const {products} = stateProducts
   const productRandom = products.burgers.items[Math.floor(Math.random() * products.burgers.items.length)]
+
+  const userId = auth.currentUser?.uid
+  const { data: userData } = useGetUserQuery(userId, {
+    skip: !userId
+  })
+  
+  const isProfileFilled = () => {
+    if (!userData) return false;
+    
+    
+    const requiredFields = ['name', 'lastName', 'phone', 'address', 'dateBirthday'];
+    for (const field of requiredFields) {
+      if (!userData[field] || userData[field].trim() === '') {
+        return false;
+      }
+    }
+    return true;
+  }
   
   return (
     <header className="header">
       <Link to="/profile" className="header__user">
         <UserIcon />
+        {!isProfileFilled() && <div className="fill-fields not-filled">•</div>}
       </Link>
       <div className="header__logo">
         <a href="#"><img src="/images/logo.svg" alt=""/></a>

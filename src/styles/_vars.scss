@@ -1,4 +1,3 @@
-
 @import url('https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,200..1000;1,200..1000&display=swap');
 
 $font: "Nunito", sans-serif;
@@ -11,8 +10,21 @@ $dark-orange: #F86310;
 $dark-white: #F2F2F3;
 $light-gray: #B1B1B1;
 $gray: #ACACAC;
-$gray: #F9F9F9;
+$gray-bg: #F9F9F9;
 $dark-gray: #B1B1B1;
+$bg-light-gray: #f7f7f7;
+$border-light-gray: #eee;
+$text-dark-gray: #333;
+$text-gray: #777;
+$border-gray: #ddd;
+$bg-ultra-light-gray: #f1f1f1;
+$error-red: #ff3b30;
+$success-green: green;
+$shadow-light: rgba(0, 0, 0, 0.1);
+$shadow-medium: rgba(0, 0, 0, 0.5);
+$shadow-dark: rgba(0, 0, 0, 0.8);
+$shadow-red: rgba(255, 59, 48, 0.7);
+$hover-light-bg: rgba(0, 0, 0, 0.05);
 
 @function rem($pixels) {
   @return ($pixels / 16) + rem;

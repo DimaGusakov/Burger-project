@@ -16,10 +16,9 @@ export default function ResetPassword() {
     }
     sendPasswordResetEmail(auth, email)
       .then((user) => {
-        console.log('Письмо для сброса пароля отправлено');
-        console.log(user);
+        
         setEmail('');
-        setError('Инструкции по сбросу пароля отправлены на вашу почту');
+        setError('Если пользователь с таким email существует, то инструкции по сбросу пароля отправлены на вашу почту');
       })
       .catch((error) => {
         setError(error.message);

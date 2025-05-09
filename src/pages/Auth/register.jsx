@@ -1,6 +1,6 @@
 import { Link, useNavigate } from 'react-router'
 import { useState } from 'react'
-import { createUserWithEmailAndPassword } from 'firebase/auth'
+import { createUserWithEmailAndPassword, deleteUser } from 'firebase/auth'
 import { auth } from '../../firebase/firebase.js'
 import { useAddUserMutation } from '../../Service/databaseApi.js'
 import './register.scss'
@@ -14,70 +14,77 @@ export default function Register() {
   const [error, setError] = useState('')
   const [passwordVisible, setPasswordVisible] = useState(false)
   const [passwordConfirmVisible, setPasswordConfirmVisible] = useState(false)
-  
-  const [addUser] = useAddUserMutation()
+  const [addUser, { isLoading }] = useAddUserMutation()
 
   const handleSubmit = e => {
-    e.preventDefault();
+    e.preventDefault()
     if (name === '' || email === '' || password === '' || passwordConfirm === '') {
-      setError('Заполните все поля');
+      setError('Заполните все поля')
       return
     }
     if (password !== passwordConfirm) {
-      setError('Пароли не совпадают');
+      setError('Пароли не совпадают')
       return
     }
+    let createdUser
     createUserWithEmailAndPassword(auth, email, password)
-      .then((userCredential) => { 
-        const userId = userCredential.user.uid
-        return addUser ({
-          userId,
+      .then(userCredential => {
+        createdUser = userCredential.user
+        return addUser({
+          userId: createdUser.uid,
           userData: {
-            name, 
+            name,
             email,
-            role: "Пользователь", 
+            role: 'Пользователь',
             createdAt: new Date().toISOString()
           }
-        })
+        }).unwrap()
       })
       .then(() => {
-        setName('');
-        setEmail('');
-        setPassword('');
-        setPasswordConfirm('');
-        setError('');
-        navigate('/home');
+        setName('')
+        setEmail('')
+        setPassword('')
+        setPasswordConfirm('')
+        setError('')
+        navigate('/home')
       })
-      .catch((error) => {
-        setError(error.message);
+      .catch(err => {
+        setError(err.message)
+        if (createdUser) {
+          deleteUser(createdUser).catch((err) => {setError(err.message)})
+        }
       })
   }
-  
+
   return (
     <div className="register">
       <div className="register__wrapper">
         <div className="register__img">
           <img src="/images/donut.png" alt="Доставка" />
         </div>
-        <form onSubmit={handleSubmit} className='register__form'>
-          {error && <p className='register__form-error'>{error}</p>}
-
+        <form onSubmit={handleSubmit} className="register__form">
+          {error && <p className="register__form-error">{error}</p>}
           <h4>Регистрация</h4>
-          <div className='register__form-info'>
-            <input type='text' value={name} onChange={(e) => setName(e.target.value)} className='input user-name' placeholder='Имя' />
-            <input type='email' value={email} onChange={(e) => setEmail(e.target.value)} className='input user-email' placeholder='Email' />
-            <div className='register__form-info-password'>
-              <input value={password} onChange={(e) => setPassword(e.target.value)} className='input user-password' type={passwordVisible ? 'text' : 'password'} placeholder='Пароль' />
-              <button onClick={() => (!passwordVisible ? setPasswordVisible(true) : setPasswordVisible(false))} type='button' className='register__form-info-password-btn'>{passwordVisible ? '🔒' : '👁️'}</button>
+          <div className="register__form-info">
+            <input type="text" value={name} onChange={e => setName(e.target.value)} className="input user-name" placeholder="Имя" />
+            <input type="email" value={email} onChange={e => setEmail(e.target.value)} className="input user-email" placeholder="Email" />
+            <div className="register__form-info-password">
+              <input value={password} onChange={e => setPassword(e.target.value)} className="input user-password" type={passwordVisible ? 'text' : 'password'} placeholder="Пароль" />
+              <button type="button" onClick={() => setPasswordVisible(!passwordVisible)} className="register__form-info-password-btn">
+                {passwordVisible ? '🔒' : '👁️'}
+              </button>
             </div>
-            <div className='register__form-info-password'>
-              <input value={passwordConfirm} onChange={(e) => setPasswordConfirm(e.target.value)} className='input user-password' type={passwordConfirmVisible ? 'text' : 'password'} placeholder='Повторите пароль' />
-              <button onClick={() => (!passwordConfirmVisible ? setPasswordConfirmVisible(true) : setPasswordConfirmVisible(false))} type='button' className='register__form-info-password-btn'>{passwordConfirmVisible ? '🔒' : '👁️'}</button>
+            <div className="register__form-info-password">
+              <input value={passwordConfirm} onChange={e => setPasswordConfirm(e.target.value)} className="input user-password" type={passwordConfirmVisible ? 'text' : 'password'} placeholder="Повторите пароль" />
+              <button type="button" onClick={() => setPasswordConfirmVisible(!passwordConfirmVisible)} className="register__form-info-password-btn">
+                {passwordConfirmVisible ? '🔒' : '👁️'}
+              </button>
             </div>
-
           </div>
-          <button className='register__button'>Зарегистрироваться</button>
-          <p className='register__form-link'>Уже есть аккаунт? <Link to="/login">Войти</Link></p>
+          <button type="submit" className="register__button" disabled={isLoading}>
+            {isLoading ? 'Загрузка...' : 'Зарегистрироваться'}
+          </button>
+          <p className="register__form-link">Уже есть аккаунт? <Link to="/login">Войти</Link></p>
         </form>
       </div>
     </div>
