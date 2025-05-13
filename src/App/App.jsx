@@ -1,15 +1,16 @@
 import React from 'react'
 import { Routes, Route, useNavigate } from 'react-router'
-import Home from '../../pages/Home/Home.jsx'
-import Register from '../../pages/Auth/register.jsx'
-import Login from '../../pages/Auth/login.jsx'
-import ResetPassword from '../../pages/Auth/resetPassword.jsx'
+import Home from '../pages/Home/Home.jsx'
+import Register from '../pages/Auth/register.jsx'
+import Login from '../pages/Auth/login.jsx'
+import ResetPassword from '../pages/Auth/resetPassword.jsx'
 import { useEffect, useState } from 'react'
-import { auth } from '../../firebase/firebase.js'
+import { auth } from '../firebase/firebase.js'
 import { onAuthStateChanged } from 'firebase/auth'
 import {Provider} from 'react-redux'
-import { store } from '../../Store/store.js'
-import Profile from '../../pages/Profile/Profile.jsx';
+import { store } from '../Store/store.js'
+import Profile from '../pages/Profile/Profile.jsx';
+import Admin from '../pages/Admin/Admin.jsx'
 import './App.scss'
 
 function App() {
@@ -24,8 +25,20 @@ function App() {
         if (currentPath === '/profile') {
           return;
         }
-        navigate('/home');
-      }       
+        
+        if (user.email === 'admin@gmail.com') {
+          try {
+            navigate('/admin')
+            return
+          } 
+          catch (error) {
+            console.error('Ошибка при перенаправлении на страницу администратора:', error)
+          }
+        } 
+        else {
+          navigate('/home');
+        }
+      } 
       else {
         navigate('/register');
       }
@@ -44,6 +57,7 @@ function App() {
         <Route path="/login" element={<Login/>}/>
         <Route path="/reset-password" element={<ResetPassword/>}/>
         <Route path="/profile" element={<Profile/>}/>
+        <Route path="/admin" element={<Admin/>}/>
       </Routes>
     </Provider>
   )

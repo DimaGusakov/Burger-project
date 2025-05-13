@@ -47,6 +47,35 @@
     font-weight: 600;
     line-height: 100%;
   }
+
+  .input-group {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    margin-bottom: 10px;
+  }
+
+  .error {
+    border: 1px solid $error-red;
+    
+    &:focus {
+      border: 1px solid $error-red;
+      box-shadow: 0 0 0 2px rgba($error-red, 0.3);
+    }
+  }
+
+  .error-message {
+    color: $error-red;
+    font-size: 12px;
+    margin-top: 3px;
+    text-align: left;
+  }
+
+  .submit-error {
+    text-align: center;
+    margin: 10px 0;
+    font-size: 14px;
+  }
 }
 .modal-delivery__form-info{
   display: flex;

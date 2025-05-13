@@ -1,13 +1,13 @@
 import './Header.scss';
-import addToCart from '../InfoCard/helper/helper';
 import UserIcon from '../icons/UserIcon';
 import { Link } from 'react-router';
 import { useGetUserQuery } from "../../Service/databaseApi";
 import { auth } from "../../firebase/firebase";
 
 export default function Header( {stateCart, stateProducts}) {
-  const {cart, setCart} = stateCart
+  const { addToCart } = stateCart
   const {products} = stateProducts
+  console.log(products)
   const productRandom = products.burgers.items[Math.floor(Math.random() * products.burgers.items.length)]
 
   const userId = auth.currentUser?.uid
@@ -48,7 +48,7 @@ export default function Header( {stateCart, stateProducts}) {
             <h1>Только самые <span>сочные бургеры!</span></h1>
             <p>Бесплатная доставка от 599₽</p>
           </div>
-          <button className='header__button none' onClick={() => addToCart(productRandom, cart, setCart)}>Добавить</button>
+          <button className='header__button none' onClick={() => addToCart(productRandom)}>Добавить</button>
         </div>
       </div>
     </header>

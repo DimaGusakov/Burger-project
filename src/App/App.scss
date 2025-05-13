@@ -1,4 +1,4 @@
-@use '../../styles/vars.scss' as *;
+@use './../styles/vars.scss' as *;
 
 * {
   box-sizing: border-box;
@@ -32,7 +32,7 @@ body {
   margin-inline: auto;
 }
 
-main{
+.main{
   .container{
     display: flex;
     gap: 30px;
@@ -54,7 +54,7 @@ main{
 }
 
 @media (max-width: 996px)  {
-  main {
+  .main {
     .container{
       flex-direction: column;
       gap: 30px;

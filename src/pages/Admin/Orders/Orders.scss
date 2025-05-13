@@ -1,0 +1,266 @@
+@import '../../../styles/vars';
+
+.admin-orders {
+  padding: 20px;
+  
+  h1 {
+    margin-bottom: 20px;
+    font-size: 28px;
+    font-weight: 700;
+    color: $text-dark-gray;
+  }
+  
+  &-loading, &-error {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 300px;
+    font-size: 18px;
+    color: $text-gray;
+  }
+  
+  &-error {
+    color: $error-red;
+  }
+  
+  &-error-message {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: rgba($error-red, 0.1);
+    border: 1px solid $error-red;
+    color: $error-red;
+    padding: 12px 15px;
+    border-radius: 8px;
+    margin-bottom: 20px;
+    font-size: 14px;
+    
+    .close-error {
+      background: none;
+      border: none;
+      color: $error-red;
+      font-size: 20px;
+      cursor: pointer;
+      padding: 0 5px;
+    }
+  }
+  
+  &-filters {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+    
+    .search-box {
+      flex: 1;
+      max-width: 400px;
+      
+      .search-input {
+        width: 100%;
+        padding: 10px 15px;
+        border: 1px solid $border-gray;
+        border-radius: 8px;
+        font-size: 14px;
+        
+        &:focus {
+          outline: none;
+          border-color: $light-orange;
+          box-shadow: 0 0 0 2px rgba($light-orange, 0.2);
+        }
+      }
+    }
+    
+    .status-filter {
+      .status-select {
+        padding: 10px 15px;
+        border: 1px solid $border-gray;
+        border-radius: 8px;
+        font-size: 14px;
+        background-color: $white;
+        cursor: pointer;
+        
+        &:focus {
+          outline: none;
+          border-color: $light-orange;
+        }
+      }
+    }
+  }
+  
+  &-empty {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 200px;
+    background-color: $bg-light-gray;
+    border-radius: 8px;
+    font-size: 16px;
+    color: $text-gray;
+  }
+  
+  &-table {
+    background-color: $white;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px $shadow-light;
+    overflow: hidden;
+  }
+  
+  &-header {
+    display: grid;
+    grid-template-columns: 0.8fr 1fr 1.5fr 1.2fr 0.8fr 1fr 1.5fr;
+    padding: 15px 20px;
+    background-color: $bg-ultra-light-gray;
+    border-bottom: 1px solid $border-light-gray;
+    font-weight: 600;
+    color: $text-dark-gray;
+  }
+}
+
+.admin-order-row {
+  display: grid;
+  grid-template-columns: 0.8fr 1fr 1.5fr 1.2fr 0.8fr 1fr 1.5fr;
+  padding: 15px 20px;
+  border-bottom: 1px solid $border-light-gray;
+  align-items: center;
+  
+  &:last-child {
+    border-bottom: none;
+  }
+  
+  &:hover {
+    background-color: $hover-light-bg;
+  }
+  
+  .order-id {
+    font-weight: 600;
+    color: $text-dark-gray;
+  }
+  
+  .order-date {
+    color: $text-gray;
+    font-size: 14px;
+  }
+  
+  .order-customer {
+    .user-info {
+      .user-name {
+        font-weight: 600;
+        margin-bottom: 3px;
+      }
+      
+      .user-phone, .user-email {
+        font-size: 13px;
+        color: $text-gray;
+      }
+    }
+  }
+  
+  .order-delivery {
+    font-size: 14px;
+    
+    .delivery-address {
+      font-size: 13px;
+      color: $text-gray;
+      margin-top: 3px;
+    }
+  }
+  
+  .order-amount {
+    font-weight: 600;
+    color: $text-dark-gray;
+  }
+  
+  .order-status {
+    display: inline-block;
+    padding: 6px 12px;
+    border-radius: 20px;
+    font-size: 13px;
+    font-weight: 500;
+    
+    &.status-pending {
+      background-color: rgba($light-orange, 0.15);
+      color: $dark-orange;
+    }
+    
+    &.status-processing {
+      background-color: rgba($light-orange, 0.2);
+      color: $orange;
+    }
+    
+    &.status-completed {
+      background-color: rgba($success-green, 0.15);
+      color: $success-green;
+    }
+    
+    &.status-cancelled {
+      background-color: rgba($error-red, 0.15);
+      color: $error-red;
+    }
+  }
+  
+  .order-actions {
+    display: flex;
+    gap: 10px;
+    
+    .status-change-select {
+      padding: 8px;
+      border: 1px solid $border-gray;
+      border-radius: 6px;
+      font-size: 13px;
+      background-color: $white;
+      cursor: pointer;
+      
+      &:focus {
+        outline: none;
+        border-color: $light-orange;
+      }
+      
+      &:disabled {
+        opacity: 0.6;
+        cursor: not-allowed;
+      }
+    }
+    
+    .view-order-btn {
+      padding: 8px 12px;
+      background-color: $light-orange;
+      color: $white;
+      border: none;
+      border-radius: 6px;
+      font-size: 13px;
+      cursor: pointer;
+      transition: background-color 0.2s;
+      
+      &:hover {
+        background-color: $dark-orange;
+      }
+    }
+  }
+}
+
+@media (max-width: 1200px) {
+  .admin-orders-header, .admin-order-row {
+    grid-template-columns: 0.6fr 0.8fr 1.2fr 1fr 0.6fr 0.8fr 1.2fr;
+  }
+}
+
+@media (max-width: 992px) {
+  .admin-orders-filters {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 10px;
+    
+    .search-box {
+      max-width: 100%;
+      width: 100%;
+    }
+  }
+  
+  .admin-orders-table {
+    overflow-x: auto;
+  }
+  
+  .admin-orders-header, .admin-order-row {
+    min-width: 900px;
+  }
+} 

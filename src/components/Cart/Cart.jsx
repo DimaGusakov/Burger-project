@@ -1,13 +1,12 @@
 import './Cart.scss';
-import {changeQuantity} from './helper/helper.js';
 import { useState } from 'react';
 
 export default function Cart({stateCart, stateModalContent, stateModal}) {
-  const {cart, setCart} = stateCart;
+  const { cart, totalCount, totalPrice, changeQuantity } = stateCart;
   const {modalContent, setModalContent} = stateModalContent;
   const {modalActive, setModalActive} = stateModal;
-  const count = cart.reduce((sum, item) => sum + item.quantity, 0);
-  const price = cart.reduce((sum, item) => sum + (item.price * item.quantity), 0);
+  const count = totalCount;
+  const price = totalPrice;
   const freeDelivery = count > 7 || price > 2500;
 
   const [cartActive, setCartActive] = useState(false);
@@ -44,19 +43,9 @@ export default function Cart({stateCart, stateModalContent, stateModal}) {
                           <p className="cart-item__price">{item.price}₽</p>
                         </div>
                         <div className="cart-item__quantity">
-                          <button
-                            className="quantity-btn"
-                            onClick={() => changeQuantity(item.id, -1, cart, setCart)}
-                          >
-                            -
-                          </button>
+                          <button className="quantity-btn" onClick={() => changeQuantity(item.id, -1)}>-</button>
                           <span>{item.quantity}</span>
-                          <button
-                            className="quantity-btn"
-                            onClick={() => changeQuantity(item.id, 1, cart, setCart)}
-                          >
-                            +
-                          </button>
+                          <button className="quantity-btn" onClick={() => changeQuantity(item.id, 1)}>+</button>
                         </div>
                       </div>
 

@@ -26,6 +26,8 @@ $shadow-dark: rgba(0, 0, 0, 0.8);
 $shadow-red: rgba(255, 59, 48, 0.7);
 $hover-light-bg: rgba(0, 0, 0, 0.05);
 
+$opacity-orange: #fff3e0;
+
 @function rem($pixels) {
   @return ($pixels / 16) + rem;
 }

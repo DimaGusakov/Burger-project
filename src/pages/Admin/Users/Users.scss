@@ -1,0 +1,140 @@
+@use '../../../styles/vars' as *;
+
+.users {
+  background-color: $dark-white;
+  min-height: 100vh;
+  width: 100%;
+  
+  .users-wrapper {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+    max-width: 1275px;
+    margin: 0 auto;
+    padding: 2rem 1.5rem;
+    
+    h1 {
+      font-size: 2rem;
+      font-weight: 700;
+      color: $black;
+      margin-bottom: 0.5rem;
+    }
+
+    .users-content {
+      background-color: $white;
+      border-radius: 1rem;
+      padding: 1.5rem;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+
+      .loading, .error, .no-users {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100px;
+        font-size: 1.2rem;
+        color: $black;
+      }
+
+      .error {
+        color: $error-red;
+      }
+
+      .users-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+        gap: 1.5rem;
+        
+        .user-card {
+          background-color: $white;
+          border-radius: 0.75rem;
+          padding: 1.5rem;
+          box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+          border: 1px solid rgba(0, 0, 0, 0.1);
+          transition: transform 0.2s, box-shadow 0.2s;
+          
+          &:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.12);
+          }
+          
+          .user-info {
+            h3 {
+              font-size: 1.4rem;
+              font-weight: 600;
+              color: $black;
+              margin-bottom: 0.75rem;
+            }
+            
+            p {
+              font-size: 1rem;
+              color: rgba(0, 0, 0, 0.7);
+              margin-bottom: 0.5rem;
+            }
+          }
+          
+          .user-actions {
+            margin-top: 1.5rem;
+            display: flex;
+            justify-content: flex-end;
+            
+            .delete-button {
+              background-color: $error-red;
+              color: $white;
+              padding: 0.5rem 1rem;
+              border-radius: 0.5rem;
+              border: none;
+              font-weight: 500;
+              cursor: pointer;
+              transition: background-color 0.2s;
+              
+              &:hover {
+                background-color: darken($error-red, 10%);
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+/* Адаптивность */
+@media (max-width: 1024px) {
+  .users {
+    .users-wrapper {
+      padding: 1.5rem 1rem;
+      gap: 1.2rem;
+      
+      h1 {
+        font-size: 1.8rem;
+      }
+
+      .users-content {
+        padding: 1.2rem;
+      }
+    }
+  }
+}
+
+@media (max-width: 768px) {
+  .users {
+    min-height: calc(100vh - 60px);
+    
+    .users-wrapper {
+      padding: 1rem;
+      gap: 1rem;
+      
+      h1 {
+        font-size: 1.5rem;
+      }
+
+      .users-content {
+        padding: 1rem;
+
+        .users-grid {
+          grid-template-columns: 1fr;
+        }
+      }
+    }
+  }
+} 

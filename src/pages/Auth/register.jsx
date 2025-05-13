@@ -36,6 +36,7 @@ export default function Register() {
             name,
             email,
             role: 'Пользователь',
+            cart: [],
             createdAt: new Date().toISOString()
           }
         }).unwrap()

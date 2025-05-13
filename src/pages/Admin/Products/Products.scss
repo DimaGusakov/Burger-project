@@ -1,0 +1,99 @@
+@use '../../../styles/vars' as *;
+@use '../../../components/ProductList/ProductList.scss' as *;
+@use '../../../components/ProductCard/ProductCard.scss' as *;
+
+.products {
+  background-color: $dark-white;
+  min-height: 100vh;
+  width: 100%;
+  
+  .products-wrapper {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+    max-width: 1275px;
+    margin: 0 auto;
+    padding: 2rem 1.5rem;
+    
+    h1 {
+      font-size: 2rem;
+      font-weight: 700;
+      color: $black;
+      margin-bottom: 0.5rem;
+    }
+
+    .products-content {
+      background-color: $white;
+      border-radius: 1rem;
+      padding: 1.5rem;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+
+      .loading {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 200px;
+        font-size: 1.2rem;
+        color: $black;
+      }
+
+      .products-list {
+        p {
+          margin-bottom: 1rem;
+          font-size: 1.1rem;
+          font-weight: 500;
+        }
+      }
+    }
+  }
+}
+
+.admin-product-card {
+  img {
+    cursor: auto;
+  }
+}
+
+/* Адаптивность */
+@media (max-width: 1024px) {
+  .products {
+    .products-wrapper {
+      padding: 1.5rem 1rem;
+      gap: 1.2rem;
+      
+      h1 {
+        font-size: 1.8rem;
+      }
+
+      .products-content {
+        padding: 1.2rem;
+      }
+    }
+  }
+}
+
+@media (max-width: 768px) {
+  .products {
+    min-height: calc(100vh - 60px); /* вычитаем примерную высоту sidebar в мобильной версии */
+    
+    .products-wrapper {
+      padding: 1rem;
+      gap: 1rem;
+      
+      h1 {
+        font-size: 1.5rem;
+      }
+
+      .products-content {
+        padding: 1rem;
+
+        .loading {
+          height: 150px;
+          font-size: 1rem;
+        }
+      }
+    }
+  }
+}
+
+

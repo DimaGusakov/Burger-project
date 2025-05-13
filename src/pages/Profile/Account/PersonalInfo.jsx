@@ -53,7 +53,7 @@ export default function PersonalInfo() {
           gender,
           address,
           location,
-          postalCode
+          postalCode,
         }
       });
     } 

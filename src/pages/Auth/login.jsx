@@ -19,13 +19,20 @@ export default function Login() {
       return
     } 
     signInWithEmailAndPassword(auth, email, password)
-      .then((user) => {
-        console.log('Пользователь успешно авторизован');
-        console.log(user);
+      .then((userCredential) => {
+        
         setEmail('');
         setPassword('');
         setError('');
-        navigate('/home')
+        
+        if (userCredential.user.email === 'admin@gmail.com') {
+          navigate('/admin');
+          return;
+        } else {
+          navigate('/home');
+          return;
+        }
+        
       })
       .catch((error) => {
         const errorCode = error.code;

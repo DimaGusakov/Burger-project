@@ -14,7 +14,6 @@ export default function Nav({stateNav}) {
               <img src={item.img} alt={item.name} />
               <span>{item.name}</span>
             </div>           
-
           ))
         }
       </div>

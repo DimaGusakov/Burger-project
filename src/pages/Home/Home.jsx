@@ -3,31 +3,49 @@ import Header from "../../components/Header/Header.jsx";
 import Nav from "../../components/Nav/Nav.jsx";
 import Cart from '../../components/Cart/Cart.jsx'
 import ModalContent from '../../components/ModalContent/ModalContent.jsx'
-import productsData from './../../Data/products.json'
 import ProductList from '../../components/ProductList/ProductList.jsx'
 import Footer from '../../components/Footer/Footer.jsx'
+import { auth } from "../../firebase/firebase";
+import { useGetProductsQuery, useGetUserQuery  } from '../../Service/databaseApi.js'
+import useCart from '../../hooks/useCart'
 
 export default function Home() {
-  const [cart, setCart] = useState([])
+  // Навигация
   const [navActive, setNavActive] = useState("burgers")
-  const [products, setProducts] = useState(productsData)
-  const [modalActive, setModalActive] = useState(false)
+  // Выбор продукта
   const [selectedProduct, setSelectedProduct] = useState(null)
-
+  // Модальное окно
+  const [modalActive, setModalActive] = useState(false)
   const [modalContent, setModalContent] = useState(null)
+  // Запросы
+  const { data: products, isLoading, isError } = useGetProductsQuery()
+  // Пользователь
+  const userId = auth.currentUser?.uid
+  const { data: userData } = useGetUserQuery(userId, {
+    skip: !userId
+  })
+  // Корзина
+  const stateCart = useCart()
+  // Состояния
   const stateModal = { modalActive, setModalActive }
-
-
+  const stateProducts = { products, isLoading, isError }
   const stateModalContent = { modalContent, setModalContent }
-  const stateCart = { cart, setCart }
   const stateNav = { navActive, setNavActive }
-  const stateProducts = { products, setProducts }
   const stateSelectedProduct = { selectedProduct, setSelectedProduct }
+  
+  if (isLoading) {
+    return <div className="loading">Загрузка данных...</div>
+  }
+  
+  if (isError || !products) {
+    return <div className="error">Ошибка загрузки данных</div>
+  }
+  
   return (
     <>
       <Header stateCart={stateCart} stateProducts={stateProducts} />
       <Nav stateNav={stateNav} />
-      <main>
+      <main className='main'>
         <div className="container">
           <Cart stateCart={stateCart} stateModalContent={stateModalContent} stateModal={stateModal} />
           <ProductList

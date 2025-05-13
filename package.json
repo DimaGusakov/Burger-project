@@ -7,7 +7,8 @@
     "dev": "vite",
     "build": "vite build",
     "lint": "eslint .",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "upload-products": "node src/scripts/uploadProducts.js"
   },
   "dependencies": {
     "@reduxjs/toolkit": "^2.7.0",

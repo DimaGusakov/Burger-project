@@ -1,0 +1,156 @@
+@use '../../../../styles/_vars.scss' as *;
+@use '../../../../components/Modal/Modal.scss' as *;
+@use '../../../../components/ModalContent/ModalContent.scss' as *;
+
+.products-content {
+  display: flex;
+  gap: 24px;
+}
+
+.products-content__image {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 8px;
+}
+.products-content__image img {
+  width: 100%;
+  border-radius: 12px;
+  object-fit: cover;
+}
+
+.products-content__image input[type="file"] {
+  width: 100%;
+  padding: 8px 12px;
+  border: 1px dashed $gray;
+  border-radius: 8px;
+  font-family: $font;
+  font-size: $font-size-16-12;
+  cursor: pointer;
+}
+
+.products-content__description {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.products-content__description textarea {
+  width: 100%;
+  min-height: 120px;
+  padding: 8px;
+  border: 1px solid $border-gray;
+  border-radius: 8px;
+  font-family: $font;
+  resize: none;
+}
+
+.products-content__description-weight {
+  display: flex;
+  gap: 16px;
+}
+.products-content__description-weight input {
+  flex: 1;
+  padding: 8px;
+  border: 1px solid $border-gray;
+  border-radius: 8px;
+}
+
+.products-content__description-ingredients {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  margin-top: 16px;
+}
+.products-content__description-ingredients label {
+  font-weight: 600;
+}
+.products-content__description-ingredients-item {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  gap: 8px;
+  align-items: center;
+}
+.products-content__description-ingredients-item input {
+  flex: 1;
+  padding: 8px;
+  border: 1px solid $border-gray;
+  border-radius: 8px;
+}
+.products-content__description-ingredients-item button {
+  padding: 6px 10px;
+  border: none;
+  background-color: $dark-orange;
+  color: $white;
+  border-radius: 8px;
+  cursor: pointer;
+}
+
+.products-content__description-ingredients > button {
+  width: fit-content;
+  margin-top: 0;
+  align-self: flex-start;
+  padding: 6px 12px;
+  background-color: transparent;
+  border: 1px dashed $gray;
+  color: $text-dark-gray;
+  border-radius: 8px;
+  cursor: pointer;
+}
+
+.products-content__description-ingredients.scrollable {
+  max-height: 160px;
+  overflow-y: auto;
+}
+
+.products-content__buttons {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+}
+.products-content__buttons button {
+  flex: 1;
+  background-color: $orange;
+  color: $white;
+  padding: 12px 16px;
+  border: none;
+  border-radius: 12px;
+  font-family: $font;
+  font-size: $font-size-16-12;
+  cursor: pointer;
+}
+.products-content__buttons input[type="number"] {
+  width: 120px;
+  padding: 8px;
+  text-align: center;
+  border: 1px solid $border-gray;
+  border-radius: 8px;
+}
+
+@media (max-width: 768px) {
+  .products-content {
+    flex-direction: column;
+  }
+  .products-content__buttons {
+    flex-direction: column;
+  }
+  .products-content__buttons button,
+  .products-content__buttons input {
+    width: 100%;
+  }
+}
+
+.modal__content-product {
+  > input[type="text"] {
+    width: 100%;
+    padding: 12px 16px;
+    border: 1px solid $border-gray;
+    border-radius: 8px;
+    font-family: $font;
+    font-size: $font-size-16-12;
+  }
+}

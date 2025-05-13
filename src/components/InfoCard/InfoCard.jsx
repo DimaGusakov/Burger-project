@@ -1,19 +1,14 @@
-import addToCart from './helper/helper.js'
-
-import { changeQuantity } from './helper/helper.js'
-
 import { useState } from 'react'
-
 import './InfoCard.scss'
-
 
 export default function InfoCart({ stateModal, stateCart, stateSelectedProduct, stateModalContent }) {
   const { modalActive, setModalActive } = stateModal;
-  const { cart, setCart } = stateCart;
+  const { addToCart } = stateCart;
   const { selectedProduct, setSelectedProduct } = stateSelectedProduct;
   const { modalContent, setModalContent } = stateModalContent;
 
   const [quantity, setQuantity] = useState(1);
+  const handleLocalChange = (delta) => setQuantity((q) => Math.max(1, q + delta));
 
   if (!selectedProduct) {
     return null;
@@ -52,7 +47,7 @@ export default function InfoCart({ stateModal, stateCart, stateSelectedProduct, 
         <div className="add-to-cart">
           <button
             onClick={() => {
-              addToCart(selectedProduct, cart, setCart);
+              addToCart({ ...selectedProduct, quantity });
               setModalActive(false);
               setSelectedProduct(null);
               setQuantity(1);
@@ -63,9 +58,9 @@ export default function InfoCart({ stateModal, stateCart, stateSelectedProduct, 
             Добавить
           </button>
           <div className="add-to-cart__counter">
-            <button onClick={() => changeQuantity(quantity, -1, setQuantity, selectedProduct)}>-</button>
-            <p>{selectedProduct.quantity || 0}</p>
-            <button onClick={() => changeQuantity(quantity, 1, setQuantity, selectedProduct)}>+</button>
+            <button onClick={() => handleLocalChange(-1)}>-</button>
+            <p>{quantity}</p>
+            <button onClick={() => handleLocalChange(1)}>+</button>
           </div>
         </div>
         <p className='modal-info-cart__price'>{selectedProduct.price}₽</p>
