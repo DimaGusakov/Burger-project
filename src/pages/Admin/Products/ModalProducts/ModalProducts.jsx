@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import Modal from '../../../../components/Modal/Modal';
 import './ModalProducts.scss'
 
 import { useAddProductMutation, useGetProductsQuery, useUpdateProductMutation } from '../../../../Service/databaseApi'
@@ -82,73 +83,70 @@ export default function ModalProducts({ navActive, isModalOpen, setIsModalOpen, 
   }
 
   return (
-    <div className={`modal ${isModalOpen ? 'active' : ''}`} onClick={() => setIsModalOpen(false)}>
-      <div className="modal__content-product" onClick={(e) => e.stopPropagation()}>
-        <input type="text" placeholder="Название" 
+    <Modal isOpen={isModalOpen} onClose={() => setIsModalOpen(false)} className="modal__products">
+      <input type="text" placeholder="Название" 
         value={name} 
         onChange={(e) => setName(e.target.value)} />
-        <div className='products-content'>
-          <div className='products-content__image'>
-            { 
-              image && (
-                <div>
-                  <img src={image} alt="" />
-                </div>
-              )
-            }
-            <input 
+      <div className='products-content'>
+        <div className='products-content__image'>
+          { 
+            image && (
+              <div>
+                <img src={image} alt="" />
+              </div>
+            )
+          }
+          <input 
             type="file" 
             onChange={handleFileUpload}         
-            />
-          </div>
-          <div className='products-content__description'>
-            <textarea
-              placeholder="Описание"
-              value={description}
-              onChange={(e) => setDescription(e.target.value)}
-            />
-            
-            <div className='products-content__description-weight'>
-              <input
-                type="text"
-                placeholder="Граммовка"
-                value={weight}
-                onChange={(e) => setWeight(e.target.value)}
-              />
-              <input
-                type="text"
-                placeholder="Ккал"
-                value={calories}
-                onChange={(e) => setCalories(e.target.value)}
-              />
-            </div>
-              <div className={`products-content__description-ingredients ${ingredients.length > 3 ? 'scrollable' : ''}`}>  
-              <label>Ингредиенты:</label>
-              {ingredients.map((ing, index) => (
-                <div key={index} className="products-content__description-ingredients-item">
-                  <input
-                    type="text"
-                    placeholder={`Ингредиент ${index + 1}`}
-                    value={ing}
-                    onChange={(e) => handleIngredientChange(index, e.target.value)}
-                  />
-                  <button type="button" onClick={() => removeIngredient(index)}>Удалить</button>
-                </div>
-              ))}
-              <button type="button" onClick={addIngredient}>Добавить ингредиент</button>
-            </div>
-          </div>    
-        </div>    
-        <div className="products-content__buttons">
-          <button onClick={handleSubmit}>{editingProduct ? 'Сохранить' : 'Создать'}</button>
-          <input
-            type="number"
-            placeholder="Цена"
-            value={price}
-            onChange={(e) => setPrice(e.target.value)}
           />
         </div>
+        <div className='products-content__description'>
+          <textarea
+            placeholder="Описание"
+            value={description}
+            onChange={(e) => setDescription(e.target.value)}
+          />
+          <div className='products-content__description-weight'>
+            <input
+              type="text"
+              placeholder="Граммовка"
+              value={weight}
+              onChange={(e) => setWeight(e.target.value)}
+            />
+            <input
+              type="text"
+              placeholder="Ккал"
+              value={calories}
+              onChange={(e) => setCalories(e.target.value)}
+            />
+          </div>
+            <div className={`products-content__description-ingredients ${ingredients.length > 3 ? 'scrollable' : ''}`}>  
+            <label>Ингредиенты:</label>
+            {ingredients.map((ing, index) => (
+              <div key={index} className="products-content__description-ingredients-item">
+                <input
+                  type="text"
+                  placeholder={`Ингредиент ${index + 1}`}
+                  value={ing}
+                  onChange={(e) => handleIngredientChange(index, e.target.value)}
+                />
+                <button type="button" onClick={() => removeIngredient(index)}>Удалить</button>
+              </div>
+            ))}
+            <button type="button" onClick={addIngredient}>Добавить ингредиент</button>
+          </div>
+        </div>    
+      </div>    
+      <div className="products-content__buttons">
+        <button onClick={handleSubmit}>{editingProduct ? 'Сохранить' : 'Создать'}</button>
+        <input
+          type="number"
+          placeholder="Цена"
+          value={price}
+          onChange={(e) => setPrice(e.target.value)}
+        />
       </div>
-    </div>
+    </Modal>
   );
 }

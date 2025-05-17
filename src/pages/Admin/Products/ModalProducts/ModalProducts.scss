@@ -5,6 +5,18 @@
 .products-content {
   display: flex;
   gap: 24px;
+  
+  
+  .add-product-button{
+    max-width: 300px;
+    width: 100%;
+    border-radius: 12px;
+    cursor: pointer;
+    padding: 12px 16px;
+    border: none;
+    background-color: $orange;
+    color: $white;
+  }
 }
 
 .products-content__image {
@@ -111,6 +123,7 @@
   align-items: center;
   justify-content: space-between;
   gap: 16px;
+  margin-top: auto;
 }
 .products-content__buttons button {
   flex: 1;
@@ -124,27 +137,23 @@
   cursor: pointer;
 }
 .products-content__buttons input[type="number"] {
-  width: 120px;
-  padding: 8px;
-  text-align: center;
+  width: 200px;
+  padding: 12px;
+
   border: 1px solid $border-gray;
   border-radius: 8px;
+  
 }
 
 @media (max-width: 768px) {
-  .products-content {
-    flex-direction: column;
-  }
-  .products-content__buttons {
-    flex-direction: column;
-  }
+
   .products-content__buttons button,
   .products-content__buttons input {
     width: 100%;
   }
 }
 
-.modal__content-product {
+.modal__products {
   > input[type="text"] {
     width: 100%;
     padding: 12px 16px;
@@ -152,5 +161,11 @@
     border-radius: 8px;
     font-family: $font;
     font-size: $font-size-16-12;
+  }
+}
+
+@media (max-width: 524px) {
+  .products-content{
+    flex-direction: column;
   }
 }

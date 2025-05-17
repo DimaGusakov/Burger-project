@@ -7,7 +7,6 @@ import { auth } from "../../firebase/firebase";
 export default function Header( {stateCart, stateProducts}) {
   const { addToCart } = stateCart
   const {products} = stateProducts
-  console.log(products)
   const productRandom = products.burgers.items[Math.floor(Math.random() * products.burgers.items.length)]
 
   const userId = auth.currentUser?.uid

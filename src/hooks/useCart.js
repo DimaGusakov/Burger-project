@@ -1,4 +1,4 @@
-import { useMemo } from 'react'
+import { useMemo, useCallback } from 'react'
 import { auth } from '../firebase/firebase'
 import { useGetUserQuery, useAddUserMutation, useUpdateUserMutation } from '../Service/databaseApi'
 
@@ -11,16 +11,16 @@ export default function useCart() {
 
   const cart = useMemo(() => userData?.cart || [], [userData])
 
-  const persistCart = async (newCart) => {
+  const persistCart = useCallback(async (newCart) => {
     if (!userId) return
     if (!userData) {
       await addUser({ userId, userData: { cart: newCart } })
     } else {
       await updateUser({ userId, userData: { cart: newCart } })
     }
-  }
+  }, [userId, userData, addUser, updateUser])
 
-  const addToCart = async (product) => {
+  const addToCart = useCallback(async (product) => {
     const existing = cart.find(item => item.id === product.id)
     let newCart
     if (existing) {
@@ -33,9 +33,9 @@ export default function useCart() {
       newCart = [...cart, { ...product, quantity: product.quantity || 1 }]
     }
     await persistCart(newCart)
-  }
+  }, [cart, persistCart])
 
-  const changeQuantity = async (id, delta) => {
+  const changeQuantity = useCallback(async (id, delta) => {
     const existing = cart.find(item => item.id === id)
     if (!existing) return
     let newCart
@@ -49,19 +49,27 @@ export default function useCart() {
       )
     }
     await persistCart(newCart)
-  }
+  }, [cart, persistCart])
 
-  const removeFromCart = async (id) => {
+  const removeFromCart = useCallback(async (id) => {
     const newCart = cart.filter(item => item.id !== id)
     await persistCart(newCart)
-  }
+  }, [cart, persistCart])
 
-  const clearCart = async () => {
+  const clearCart = useCallback(async () => {
     await persistCart([])
-  }
+  }, [persistCart])
 
-  const totalCount = useMemo(() => cart.reduce((sum, item) => sum + item.quantity, 0), [cart])
-  const totalPrice = useMemo(() => cart.reduce((sum, item) => sum + item.quantity * item.price, 0), [cart])
+  const { totalCount, totalPrice } = useMemo(() => {
+    return cart.reduce(
+      (acc, item) => {
+        acc.totalCount += item.quantity
+        acc.totalPrice += item.quantity * item.price
+        return acc
+      },
+      { totalCount: 0, totalPrice: 0 }
+    )
+  }, [cart])
 
   return {
     cart,

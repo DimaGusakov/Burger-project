@@ -1,6 +1,5 @@
 import nav from './../../Data/nav.json'
 import './Nav.scss'
-
 export default function Nav({stateNav}) {
 
   const { navActive, setNavActive } = stateNav;

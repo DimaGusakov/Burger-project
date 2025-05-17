@@ -1,6 +1,6 @@
 @use "../../styles/vars.scss" as *;
 
-.modal__content-product, .modal__content-delivery {
+.modal__content-product, .modal__content-delivery, .modal__products{
   position: relative;
   max-width: 684px;
   max-height: 432px;
@@ -10,7 +10,8 @@
   display: flex;
 }
 
-.modal__content-product {
+
+.modal__content-product, .modal__products {
   padding: 24px 24px 36px 24px;
   flex-direction: column;
   background-color: $white;
@@ -21,6 +22,11 @@
     font-weight: 600;
     line-height: 120%;
   }
+}
+
+.modal__products{
+  max-height: 600px;
+  padding: 60px 24px 36px 24px; 
 }
 
 .modal__content-delivery {
@@ -46,7 +52,7 @@
 }
 
 @media (max-width: 524px) {
-  .modal__content-product, .modal__content-delivery {
+  .modal__content-product, .modal__content-delivery, .modal__products {
     max-width: 100vw;
     width: 100%;
     min-height: 100vh;

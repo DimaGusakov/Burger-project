@@ -10,23 +10,16 @@ import { useGetProductsQuery, useGetUserQuery  } from '../../Service/databaseApi
 import useCart from '../../hooks/useCart'
 
 export default function Home() {
-  // Навигация
   const [navActive, setNavActive] = useState("burgers")
-  // Выбор продукта
   const [selectedProduct, setSelectedProduct] = useState(null)
-  // Модальное окно
   const [modalActive, setModalActive] = useState(false)
   const [modalContent, setModalContent] = useState(null)
-  // Запросы
   const { data: products, isLoading, isError } = useGetProductsQuery()
-  // Пользователь
   const userId = auth.currentUser?.uid
   const { data: userData } = useGetUserQuery(userId, {
     skip: !userId
   })
-  // Корзина
   const stateCart = useCart()
-  // Состояния
   const stateModal = { modalActive, setModalActive }
   const stateProducts = { products, isLoading, isError }
   const stateModalContent = { modalContent, setModalContent }

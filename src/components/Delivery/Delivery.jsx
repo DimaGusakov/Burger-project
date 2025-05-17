@@ -1,13 +1,16 @@
 import { auth } from '../../firebase/firebase';
 import { useGetUserQuery, useAddOrderMutation } from "../../Service/databaseApi";
+import { useState } from 'react';
+import './Delivery.scss';
+import InputGroup from './InputGroup';
+import DeliveryTypeSelector from './DeliveryTypeSelector';
+import DeliveryAddressFields from './DeliveryAddressFields';
 
-import { useState } from 'react'
-import './Delivery.scss'
 export default function Delivery({ stateModal, stateModalContent, stateCart }) {
   const { modalContent, setModalContent } = stateModalContent;
   const { modalActive, setModalActive } = stateModal;
   const { cart, totalPrice, clearCart } = stateCart;
-  
+
   const [deliveryType, setDeliveryType] = useState('delivery');
   const [formData, setFormData] = useState({
     name: '',
@@ -20,7 +23,7 @@ export default function Delivery({ stateModal, stateModalContent, stateCart }) {
 
   const [addOrder] = useAddOrderMutation();
 
-  const userId = auth.currentUser?.uid
+  const userId = auth.currentUser?.uid;
   const { data: userData, isLoading, isError } = useGetUserQuery(userId, {
     skip: !userId
   });
@@ -34,38 +37,24 @@ export default function Delivery({ stateModal, stateModalContent, stateCart }) {
 
   const validateForm = () => {
     const newErrors = {};
-    
     if (!formData.name && !userData?.name) {
       newErrors.name = 'Введите имя';
     }
-    
     if (!formData.phone && !userData?.phone) {
       newErrors.phone = 'Введите номер телефона';
     }
-    
     if (deliveryType === 'delivery') {
-      if (!formData.street) {
-        newErrors.street = 'Введите адрес';
-      }
-      if (!formData.floor) {
-        newErrors.floor = 'Введите этаж';
-      }
-      if (!formData.intercom) {
-        newErrors.intercom = 'Введите код домофона';
-      }
+      if (!formData.street) newErrors.street = 'Введите адрес';
+      if (!formData.floor) newErrors.floor = 'Введите этаж';
+      if (!formData.intercom) newErrors.intercom = 'Введите код домофона';
     }
-    
     setErrors(newErrors);
     return Object.keys(newErrors).length === 0;
   };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    
-    if (!validateForm()) {
-      return;
-    }
-    
+    if (!validateForm()) return;
     const orderData = {
       userId,
       items: cart,
@@ -85,7 +74,6 @@ export default function Delivery({ stateModal, stateModalContent, stateCart }) {
         })
       }
     };
-    
     try {
       await addOrder({ userId, orderData }).unwrap();
       clearCart();
@@ -97,8 +85,8 @@ export default function Delivery({ stateModal, stateModalContent, stateCart }) {
     }
   };
 
-  if (isLoading) return <div className='loading-delivery'>Загрузка...</div>
-  if (isError) return <div>Ошибка при загрузке данных</div>
+  if (isLoading) return <div className='loading-delivery'>Загрузка...</div>;
+  if (isError) return <div>Ошибка при загрузке данных</div>;
 
   return (
     <>
@@ -107,92 +95,33 @@ export default function Delivery({ stateModal, stateModalContent, stateCart }) {
       </div>
       <form className='modal-delivery__form' onSubmit={handleSubmit}>
         <h4>Доставка</h4>
-
         <div className='modal-delivery__form-info'>
-          <div className="input-group">
-            <input 
-              onChange={(e) => handleInputChange('name', e.target.value)} 
-              value={formData.name || userData?.name || ''} 
-              className={`input ${errors.name ? 'error' : ''}`} 
-              type="text" 
-              placeholder='Ваше имя' 
-            />
-            {errors.name && <p className="error-message">{errors.name}</p>}
-          </div>
-          
-          <div className="input-group">
-            <input 
-              onChange={(e) => handleInputChange('phone', e.target.value)} 
-              value={formData.phone || userData?.phone || ''} 
-              className={`input ${errors.phone ? 'error' : ''}`} 
-              type="tel" 
-              placeholder='Телефон' 
-            />
-            {errors.phone && <p className="error-message">{errors.phone}</p>}
-          </div>
+          <InputGroup
+            value={formData.name || userData?.name || ''}
+            onChange={e => handleInputChange('name', e.target.value)}
+            placeholder='Ваше имя'
+            error={errors.name}
+          />
+          <InputGroup
+            value={formData.phone || userData?.phone || ''}
+            onChange={e => handleInputChange('phone', e.target.value)}
+            type='tel'
+            placeholder='Телефон'
+            error={errors.phone}
+          />
         </div>
         <div className='modal-delivery__form-delivery-type'>
-          <div className='delivery-type' onChange={(e) => {
-            setDeliveryType(e.target.value);
-          }}>
-
-            <div>
-              <input className='delivery-type__radio' type="radio" id="pickup" name="deliveryType" value='pickup' />
-              <span className='custom-radio'></span>
-
-              <label htmlFor="pickup">Самовывоз</label>
-            </div>
-            <div>
-              <input defaultChecked className='delivery-type__radio' type="radio" id="delivery" name="deliveryType" value='delivery' />
-              <span className='custom-radio'></span>
-
-              <label htmlFor="delivery">Доставка</label>
-            </div>
-
-          </div>
-
-
-          <div className={`delivery-address ${deliveryType === 'delivery' ? 'active' : ''}`}>
-            <div className="input-group">
-              <input 
-                onChange={(e) => handleInputChange('street', e.target.value)} 
-                value={formData.street} 
-                className={`input ${errors.street ? 'error' : ''}`} 
-                type="text" 
-                placeholder='Улица, дом, квартира' 
-              />
-              {errors.street && <p className="error-message">{errors.street}</p>}
-            </div>
-            
-            <div>
-              <div className="input-group">
-                <input 
-                  onChange={(e) => handleInputChange('floor', e.target.value)} 
-                  value={formData.floor} 
-                  className={`input ${errors.floor ? 'error' : ''}`} 
-                  type="text" 
-                  placeholder='Этаж' 
-                />
-                {errors.floor && <p className="error-message">{errors.floor}</p>}
-              </div>
-              
-              <div className="input-group">
-                <input 
-                  onChange={(e) => handleInputChange('intercom', e.target.value)} 
-                  value={formData.intercom} 
-                  className={`input ${errors.intercom ? 'error' : ''}`} 
-                  type="text" 
-                  placeholder='Домофон' 
-                />
-                {errors.intercom && <p className="error-message">{errors.intercom}</p>}
-              </div>
-            </div>
-          </div>
-
+          <DeliveryTypeSelector deliveryType={deliveryType} setDeliveryType={setDeliveryType} />
+          <DeliveryAddressFields
+            formData={formData}
+            errors={errors}
+            handleInputChange={handleInputChange}
+            isActive={deliveryType === 'delivery'}
+          />
           {errors.submit && <p className="error-message submit-error">{errors.submit}</p>}
         </div>
         <button type="submit" className='modal-delivery__button'>Оформить</button>
       </form>
     </>
-  )
+  );
 }
