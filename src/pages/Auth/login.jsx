@@ -55,9 +55,9 @@ export default function Login() {
           {error && <p className='login__form-error'>{error}</p>}
           <h4>Вход</h4>
           <div className='login__form-info'>
-            <input value={email} onChange={(e) => setEmail(e.target.value)} className='input user-email' type="text" placeholder='Email' />
+            <input autoComplete="email" value={email} onChange={(e) => setEmail(e.target.value)} className='input user-email' type="text" placeholder='Email' />
             <div className='login__form-info-password'>
-              <input value={password} onChange={(e) => setPassword(e.target.value)} className='input user-password' type={passwordVisible ? 'text' : 'password'} placeholder='Пароль' />
+              <input autoComplete="current-password" value={password} onChange={(e) => setPassword(e.target.value)} className='input user-password' type={passwordVisible ? 'text' : 'password'} placeholder='Пароль' />
               <button onClick={() => (!passwordVisible ? setPasswordVisible(true) : setPasswordVisible(false))} type='button' className='login__form-info-password-btn'>{passwordVisible ? '🔒' : '👁️'}</button>
             </div>    
           </div>

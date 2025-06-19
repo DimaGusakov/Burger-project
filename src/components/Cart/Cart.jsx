@@ -5,7 +5,7 @@ import CartItem from '../CartItem/CartItem';
 export default function Cart({
   stateCart: { cart, totalCount, totalPrice, changeQuantity },
   stateModalContent: { setModalContent },
-  stateModal: { modalActive, setModalActive }
+  stateModal: {setModalActive }
 }) {
   const freeDelivery = totalCount > 7 || totalPrice > 2500;
   const [cartActive, setCartActive] = useState(false);

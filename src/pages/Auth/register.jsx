@@ -67,16 +67,16 @@ export default function Register() {
           {error && <p className="register__form-error">{error}</p>}
           <h4>Регистрация</h4>
           <div className="register__form-info">
-            <input type="text" value={name} onChange={e => setName(e.target.value)} className="input user-name" placeholder="Имя" />
-            <input type="email" value={email} onChange={e => setEmail(e.target.value)} className="input user-email" placeholder="Email" />
+            <input autoComplete="username" type="text" value={name} onChange={e => setName(e.target.value)} className="input user-name" placeholder="Имя" />
+            <input autoComplete="email" type="email" value={email} onChange={e => setEmail(e.target.value)} className="input user-email" placeholder="Email" />
             <div className="register__form-info-password">
-              <input value={password} onChange={e => setPassword(e.target.value)} className="input user-password" type={passwordVisible ? 'text' : 'password'} placeholder="Пароль" />
+              <input autoComplete="new-password" value={password} onChange={e => setPassword(e.target.value)} className="input user-password" type={passwordVisible ? 'text' : 'password'} placeholder="Пароль" />
               <button type="button" onClick={() => setPasswordVisible(!passwordVisible)} className="register__form-info-password-btn">
                 {passwordVisible ? '🔒' : '👁️'}
               </button>
             </div>
             <div className="register__form-info-password">
-              <input value={passwordConfirm} onChange={e => setPasswordConfirm(e.target.value)} className="input user-password" type={passwordConfirmVisible ? 'text' : 'password'} placeholder="Повторите пароль" />
+              <input autoComplete="new-password" value={passwordConfirm} onChange={e => setPasswordConfirm(e.target.value)} className="input user-password" type={passwordConfirmVisible ? 'text' : 'password'} placeholder="Повторите пароль" />
               <button type="button" onClick={() => setPasswordConfirmVisible(!passwordConfirmVisible)} className="register__form-info-password-btn">
                 {passwordConfirmVisible ? '🔒' : '👁️'}
               </button>

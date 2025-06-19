@@ -1,5 +1,5 @@
 import {createApi, fakeBaseQuery} from '@reduxjs/toolkit/query/react'
-import {ref, set, get, push, remove, update, onValue, off, query} from 'firebase/database'
+import {ref, set, get, push, remove, update} from 'firebase/database'
 import { db } from '../firebase/firebase'
 
 export const databaseApi = createApi({
